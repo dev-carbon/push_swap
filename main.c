@@ -25,7 +25,7 @@ int			main(int ac, char **av)
 	{
 		args = init_args(args, ac, av);
 		stack = init_stack(stack, args);
-		checker(stack	, action);
+		checker(stack, action);
 	}
 	return (0);
 }

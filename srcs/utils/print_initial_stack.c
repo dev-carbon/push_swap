@@ -16,9 +16,11 @@ void	print_initial_stack(t_stack stack)
 {
 	int	i;
 
-	printf("Initial stack\n");
+	printf("\nInitial stack");
+	printf("\n-------------\n");
 	i = -1;
 	while (++i < stack.len)
 		printf("%d\n", stack.tab[i]);
 	printf("_\na\n\n");
+	printf("\n-------------\n");
 }

@@ -14,12 +14,6 @@
 
 void	swap(t_stack *stack)
 {
-	int	tmp;
-
-	if (stack->len > 1)
-	{
-		tmp = stack->tab[0];
-		stack->tab[0] = stack->tab[1];
-		stack->tab[1] = tmp;
-	}
+	if (!is_empty(*stack))
+		ft_swap(&stack->tab[0], &stack->tab[1]);
 }

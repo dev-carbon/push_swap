@@ -13,7 +13,7 @@
 #ifndef CONST_H
 # define CONST_H
 
-# define BUFFER_SIZE 5
+# define BUF_SIZE 5
 
 # define LABEL_MAX_LEN 4
 # define LABEL_MIN_LEN 2

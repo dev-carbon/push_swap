@@ -40,45 +40,91 @@ static void	perform_actions(t_stack *a, t_stack *b, t_action *actions)
 	t_action	*action;
 	
 	queue = actions;
+	
+	ft_putstr("Exec ");
 	while (queue)
 	{
 		action = queue;
 		if (ft_strncmp(action->label, SWAP_A, action->len) == 0)
+		{
+			ft_putstr("sa ");
 			swap(a);
-		if (ft_strncmp(action->label, SWAP_B, action->len) == 0)
+		}
+		else if (ft_strncmp(action->label, SWAP_B, action->len) == 0)
+		{
+			ft_putstr("sb ");
 			swap(b);
+		}
+		else if (ft_strncmp(action->label, SWAP_AB, action->len) == 0)
+		{
+			ft_putstr("ss ");
+			swap(a);
+			swap(b);
+		}
 		else if (ft_strncmp(action->label, PUSH_A, action->len) == 0)
 		{
-			ft_putstr("Exec pa\n");
+			ft_putstr("pa ");
 			a = push(a, b);
 			b = pop(b);
 		}	
 		else if (ft_strncmp(action->label, PUSH_B, action->len) == 0)
 		{
-			ft_putstr("Exec pb\n");
+			ft_putstr("pb ");
 			b = push(b, a);
 			a = pop(a);
 		}
+		else if (ft_strncmp(action->label, ROTATE_A, action->len) == 0)
+		{
+			ft_putstr("ra ");
+			rotate(a);
+		}
+		else if (ft_strncmp(action->label, ROTATE_B, action->len) == 0)
+		{
+			ft_putstr("rb ");
+			rotate(b);
+		}
+		else if (ft_strncmp(action->label, ROTATE_AB, action->len) == 0)
+		{
+			ft_putstr("rr ");
+			rotate(a);
+			rotate(b);
+		}
+		else if (ft_strncmp(action->label, REV_ROTATE_A, action->len) == 0)
+		{
+			ft_putstr("rra ");
+			rev_rotate(a);
+		}
+		else if (ft_strncmp(action->label, REV_ROTATE_B, action->len) == 0)
+		{
+			ft_putstr("rrb ");
+			rev_rotate(b);
+		}
+		else if (ft_strncmp(action->label, REV_ROTATE_AB, action->len) == 0)
+		{
+			ft_putstr("rrr ");
+			rev_rotate(a);
+			rev_rotate(b);
+		}
 		queue = queue->next;
 	}
+	ft_putstr("\b:\n");
 	print_stack(*a, *b);
 }
 
 int	checker(t_stack *a, t_action *action)
 {
 	int		nbytes;
-	char	buf[BUFFER_SIZE];
+	char	buf[BUF_SIZE];
 	t_stack	*b;
 
 	b = new_stack(0);
-	ft_bzero(buf, BUFFER_SIZE);
-	while ((nbytes = read(STDIN_FILENO, buf, BUFFER_SIZE)))
+	ft_bzero(buf, BUF_SIZE);
+	while ((nbytes = read(STDIN_FILENO, buf, BUF_SIZE)))
 	{
 		buf[nbytes - 1] = '\0';
 		if (is_valid_action(buf, nbytes))
 		{
 			action = store_action(action, buf);
-			perform_actions(a, b, action);
 		}
 	}
 	print_initial_stack(*a);
