@@ -18,14 +18,14 @@ t_stack	*pop(t_stack *stack)
 	t_stack	*new;
 
 	if (!is_empty(*stack))
+	{
 		new = new_stack(stack->len - 1);
-	else
-		new = new_stack(0);
-	i = -1;
-	while (++i < new->len)
-		new->tab[i] = stack->tab[i + 1];
-	ft_bzero(stack->tab, stack->len);
-	free(stack);
-	stack = new;
+		i = -1;
+		while (++i < new->len)
+			new->tab[i] = stack->tab[i + 1];
+		ft_bzero(stack->tab, stack->len);
+		free(stack);
+		stack = new;
+	}
 	return (stack);
 }

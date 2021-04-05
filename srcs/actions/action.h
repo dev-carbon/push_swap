@@ -20,5 +20,6 @@ void	rotate(t_stack *stack);
 void	rev_rotate(t_stack *stack);
 t_stack	*push(t_stack *dst, t_stack *src);
 t_stack	*pop(t_stack *stack);
+void	execute(t_stack **a, t_stack **b, t_action *action);
 
 #endif
