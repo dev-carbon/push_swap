@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   swap.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 11:16:08 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 11:16:11 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "action.h"
 
-int			main(int ac, char **av)
+void	swap(t_stack *stack)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int	tmp;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
+	if (stack->len > 1)
 	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
+		tmp = stack->tab[0];
+		stack->tab[0] = stack->tab[1];
+		stack->tab[1] = tmp;
 	}
-	return (0);
 }

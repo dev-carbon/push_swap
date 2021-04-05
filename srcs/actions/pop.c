@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 14:29:09 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 14:29:10 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "action.h"
 
-int			main(int ac, char **av)
+t_stack	*pop(t_stack *stack)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int		i;
+	t_stack	*new;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
+	if (!is_empty(*stack))
+		new = new_stack(stack->len - 1);
+	else
+		new = new_stack(0);
+	i = -1;
+	while (++i < new->len)
+		new->tab[i] = stack->tab[i + 1];
+	ft_bzero(stack->tab, stack->len);
+	free(stack);
+	stack = new;
+	return (stack);
 }

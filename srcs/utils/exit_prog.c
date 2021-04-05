@@ -1,31 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit_prog.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 13:37:18 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/04 13:41:03 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "util.h"
 
-int			main(int ac, char **av)
+int	exit_prog(int status)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
-
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
+	if (status == EXIT_FAILURE)
+		ft_putstr_fd("Error\n", STDOUT_FILENO);
+	if (status == EXIT_SUCCESS)
+		ft_putstr_fd("Bye!\n", STDOUT_FILENO);
+	exit(status);
 	return (0);
 }

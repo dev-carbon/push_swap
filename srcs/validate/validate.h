@@ -1,31 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:48:35 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/04 12:48:40 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef VALIDATE_H
+# define VALIDATE_H
 
-int			main(int ac, char **av)
-{
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+# include "push_swap.h"
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
-}
+int		is_valid_args(int argc, char **argv);
+int		is_valid_action(char *label, int nbytes);
+
+#endif

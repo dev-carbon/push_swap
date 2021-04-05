@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_initial_stack.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 15:16:03 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 15:16:17 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "util.h"
 
-int			main(int ac, char **av)
+void	print_initial_stack(t_stack stack)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int	i;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
+	printf("Initial stack\n");
+	i = -1;
+	while (++i < stack.len)
+		printf("%d\n", stack.tab[i]);
+	printf("_\na\n\n");
 }

@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   new_stack.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 13:32:41 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 13:32:43 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "util.h"
 
-int			main(int ac, char **av)
+t_stack	*new_stack(int len)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
-
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
+	t_stack	*stack;
+	
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (len > 0)
+		stack->tab = (int *)malloc(sizeof(int) * len);
+	else
+		stack->tab = NULL;
+	stack->len = len;
+	return (stack);
 }

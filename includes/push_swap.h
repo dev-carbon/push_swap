@@ -1,31 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:03:18 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/04 12:03:59 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef PUSH_SWAP_H
+# define PUSH_SWAP_H
 
-int			main(int ac, char **av)
-{
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include "libft.h"
+# include "struct.h"
+# include "const.h"
+# include "init.h"
+# include "util.h"
+# include "validate.h"
+# include "action.h"
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
-}
+int	checker(t_stack *a, t_action *action);
+
+#endif

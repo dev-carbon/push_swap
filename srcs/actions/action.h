@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   action.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 11:11:48 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 11:11:50 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef ACTION_H
+# define ACTION_H
 
-int			main(int ac, char **av)
-{
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+# include "push_swap.h"
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
-}
+void	swap(t_stack *stack);
+t_stack	*push(t_stack *dst, t_stack *src);
+t_stack	*pop(t_stack *stack);
+
+#endif

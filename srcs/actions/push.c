@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 12:49:36 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 12:49:40 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "action.h"
 
-int			main(int ac, char **av)
+t_stack	*push(t_stack *dst, t_stack *src)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int		i;
+	t_stack	*tmp_dst;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
+	if (!is_empty(*src))
 	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
+		tmp_dst = new_stack(dst->len + 1);
+		// printf("dst len: %d\n", tmp_dst->len);
+		tmp_dst->tab[0] = src->tab[0];
+		i = 0;
+		while (++i < tmp_dst->len)
+	 		tmp_dst->tab[i] = dst->tab[i - 1];
+		dst = tmp_dst;
 	}
-	return (0);
+	return (dst);
 }

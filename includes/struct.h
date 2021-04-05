@@ -1,31 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   struct.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 09:48:12 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 09:48:16 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef STRUCT_H
+# define STRUCT_H
 
-int			main(int ac, char **av)
+typedef struct 	s_stack
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int		*tab;
+	int		len;
+}				t_stack;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
-}
+typedef struct		s_action
+{
+	char			*label;
+	int				len;
+	struct s_action	*next;
+}					t_action;
+
+
+typedef struct	s_args
+{
+	int			ac;
+	char		**av;
+}				t_args;
+
+#endif

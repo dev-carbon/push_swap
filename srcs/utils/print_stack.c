@@ -1,31 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   print_stack.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 11:20:16 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 11:20:19 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "util.h"
 
-int			main(int ac, char **av)
+void	print_stack(t_stack a, t_stack b)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+	int	i;
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
+	if (a.len > b.len)
 	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
+		i = -1;
+		while (++i < b.len)
+			printf("%d %d\n", a.tab[i], b.tab[i]);
+		while (i < a.len)
+			printf("%d\n", a.tab[i++]);
 	}
-	return (0);
+	else
+	{
+		i = -1;
+		while (++i < a.len)
+			printf("%d %d\n", a.tab[i], b.tab[i]);
+		while (i < b.len)
+			printf("  %d\n", b.tab[i++]);
+	}
+	printf("_ _\n");
+	printf("a b\n\n");
 }

@@ -1,31 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_args.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 12:35:41 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 12:36:17 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "init.h"
 
-int			main(int ac, char **av)
+t_args	*init_args(t_args *args, int argc, char **argv)
 {
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
-
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
+	if (!(args = (t_args *)malloc(sizeof(t_args))))
+		return (NULL);
+	args->ac = argc - 1;
+	args->av = argv;
+	return (args);
 }

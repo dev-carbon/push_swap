@@ -1,31 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   util.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:45:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:45:42 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 13:24:45 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/04 13:36:55 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef UTIL_H
+# define UTIL_H
 
-int			main(int ac, char **av)
-{
-	t_args		*args;
-	t_stack		*stack;
-	t_action	*action;
+# include "push_swap.h"
 
-	args = NULL;
-	stack = NULL;
-	action = NULL;
-	if (is_valid_args(ac, av))
-	{
-		args = init_args(args, ac, av);
-		stack = init_stack(stack, args);
-		checker(stack	, action);
-	}
-	return (0);
-}
+int			exit_prog(int status);
+int			is_empty(t_stack stack);
+void		print_initial_stack(t_stack stack);
+void		print_stack(t_stack stack_a, t_stack stack_b);
+t_stack		*new_stack(int len);
+
+#endif
