@@ -34,25 +34,26 @@ static t_action	*store_action(t_action *action, char *label)
 	return (action);
 }
 
-static void	do_actions(t_stack *a, t_stack *b, t_action *actions)
+static void		do_actions(t_stack **a, t_stack **b, t_action *actions)
 {
 	t_action	*queue;
 	t_action	*action;
-	
+	char		*command;
+
 	queue = actions;
-	
 	ft_putstr("Exec ");
 	while (queue)
 	{
 		action = queue;
-		execute(&a, &b, action);
+		command = ft_strjoin(action->label, " ");
+		ft_putstr(command);
+		execute(a, b, action);
 		queue = queue->next;
 	}
 	ft_putstr("\b:\n");
-	print_stack(*a, *b);
 }
 
-int	checker(t_stack *a, t_action *action)
+int				checker(t_stack *a, t_action *action)
 {
 	int		nbytes;
 	char	buf[BUF_SIZE];
@@ -67,6 +68,11 @@ int	checker(t_stack *a, t_action *action)
 			action = store_action(action, buf);
 	}
 	print_initial_stack(*a);
-	do_actions(a, b, action);
-	return (1);
+	do_actions(&a, &b, action);
+	print_stack(*a, *b);
+	if (is_sorted(*a) && is_empty(*b))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
+	return (0);
 }

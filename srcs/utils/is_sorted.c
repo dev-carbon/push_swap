@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_initial_stack.c                              :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 15:16:03 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 15:16:17 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 23:41:01 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 23:41:05 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-void	print_initial_stack(t_stack stack)
+int	is_sorted(t_stack stack)
 {
 	int	i;
 
-	printf("\nInitial stack");
-	printf("\n-------------\n");
 	i = -1;
-	while (++i < stack.len)
-		printf("%d\n", stack.tab[i]);
-	printf("_\na\n\n");
-	printf("\n-------------\n");
+	while (++i < stack.len - 1)
+		if (stack.tab[i] > stack.tab[i + 1])
+			return (0);
+	return (1);
 }

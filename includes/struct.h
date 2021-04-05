@@ -13,11 +13,11 @@
 #ifndef STRUCT_H
 # define STRUCT_H
 
-typedef struct 	s_stack
+typedef struct		s_stack
 {
 	int		*tab;
 	int		len;
-}				t_stack;
+}					t_stack;
 
 typedef struct		s_action
 {
@@ -26,11 +26,10 @@ typedef struct		s_action
 	struct s_action	*next;
 }					t_action;
 
-
-typedef struct	s_args
+typedef struct		s_args
 {
 	int			ac;
 	char		**av;
-}				t_args;
+}					t_args;
 
 #endif

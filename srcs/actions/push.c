@@ -12,7 +12,7 @@
 
 #include "action.h"
 
-t_stack	*push(t_stack *dst, t_stack *src)
+t_stack		*push(t_stack *dst, t_stack *src)
 {
 	int		i;
 	t_stack	*tmp;
@@ -23,7 +23,7 @@ t_stack	*push(t_stack *dst, t_stack *src)
 		tmp->tab[0] = src->tab[0];
 		i = 0;
 		while (++i < tmp->len)
-	 		tmp->tab[i] = dst->tab[i - 1];
+			tmp->tab[i] = dst->tab[i - 1];
 		dst = tmp;
 	}
 	return (dst);

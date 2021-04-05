@@ -57,9 +57,11 @@ $(BONUS): $(OBJS_BONUS)
 	$(CC) $(CCFLAGS) -c $< -o $@ 
 
 clean:
+	@cd libft && $(MAKE) clean
 	@rm -rf *.o
 
 fclean: clean
+	@cd libft && $(MAKE) fclean
 	@rm -rf $(NAME) $(PUSH_SWAP) a.out
 
 re: fclean all

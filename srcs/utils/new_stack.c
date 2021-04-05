@@ -12,10 +12,10 @@
 
 #include "util.h"
 
-t_stack	*new_stack(int len)
+t_stack		*new_stack(int len)
 {
 	t_stack	*stack;
-	
+
 	stack = (t_stack *)malloc(sizeof(t_stack));
 	if (len > 0)
 		stack->tab = (int *)malloc(sizeof(int) * len);

@@ -12,25 +12,25 @@
 
 #include "action.h"
 
-static	void	swap_both(t_stack *a, t_stack *b)
+static void	swap_both(t_stack *a, t_stack *b)
 {
 	swap(a);
 	swap(b);
 }
 
-static	void	rotate_both(t_stack *a, t_stack *b)
+static void	rotate_both(t_stack *a, t_stack *b)
 {
 	rotate(a);
 	rotate(b);
 }
 
-static	void	rev_rotate_both(t_stack *a, t_stack *b)
+static void	rev_rotate_both(t_stack *a, t_stack *b)
 {
 	rev_rotate(a);
 	rev_rotate(b);
 }
 
-void	execute(t_stack **a, t_stack **b, t_action *action)
+void		execute(t_stack **a, t_stack **b, t_action *action)
 {
 	if (ft_strncmp(action->label, "sa", action->len) == 0)
 		swap(*a);
@@ -39,11 +39,15 @@ void	execute(t_stack **a, t_stack **b, t_action *action)
 	else if (ft_strncmp(action->label, "ss", action->len) == 0)
 		swap_both(*a, *b);
 	if (ft_strncmp(action->label, "pa", action->len) == 0)
-		if ((*a = push(*a, *b)))
-			*b = pop(*b);
+	{
+		*a = push(*a, *b);
+		*b = pop(*b);
+	}
 	if (ft_strncmp(action->label, "pb", action->len) == 0)
-		if ((*b = push(*b, *a)))
-			*a = pop(*a);
+	{
+		*b = push(*b, *a);
+		*a = pop(*a);
+	}
 	if (ft_strncmp(action->label, "ra", action->len) == 0)
 		rotate(*a);
 	else if (ft_strncmp(action->label, "rb", action->len) == 0)

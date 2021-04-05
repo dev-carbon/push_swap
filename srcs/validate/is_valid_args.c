@@ -12,7 +12,7 @@
 
 #include "push_swap.h"
 
-int	is_valid_chars(char *line)
+static int	is_valid_chars(char *line)
 {
 	int		i;
 
@@ -23,7 +23,7 @@ int	is_valid_chars(char *line)
 	return (1);
 }
 
-int	is_duplicate(int nbr, int argc, char **argv)
+static int	is_duplicate(int nbr, int argc, char **argv)
 {
 	int		i;
 	int		count;
@@ -40,7 +40,7 @@ int	is_duplicate(int nbr, int argc, char **argv)
 	return (0);
 }
 
-int	is_valid_args(int argc, char **argv)
+int			is_valid_args(int argc, char **argv)
 {
 	int		i;
 	int		nbr;

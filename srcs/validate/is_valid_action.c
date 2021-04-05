@@ -18,7 +18,7 @@ int		is_valid_action(char *label, int nbytes)
 
 	if (nbytes > BUF_SIZE)
 		exit_prog(EXIT_FAILURE);
-	len = (int)ft_strlen(label); 
+	len = (int)ft_strlen(label);
 	if (len < LABEL_MIN_LEN || len > LABEL_MAX_LEN)
 		exit_prog(EXIT_FAILURE);
 	if (ft_strncmp(label, SWAP_A, len) != 0 &&
