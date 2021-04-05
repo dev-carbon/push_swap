@@ -45,9 +45,10 @@ OBJS_BONUS = $(SRCS_BONUS: %.c=%.o)
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(MAKE) --directory=libft
-	$(CC) $(CCFLAGS) $(SANITIZE) $(INCLUDES) -o $@ $^ $(LIBS)
-
+	@$(MAKE) --directory=libft
+	@$(CC) $(CCFLAGS) $(SANITIZE) $(INCLUDES) -o $@ $^ $(LIBS)
+	@echo "\nProgram checker created."
+ 
 bonus: $(BONUS)
 
 $(BONUS): $(OBJS_BONUS)
