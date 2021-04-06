@@ -21,6 +21,7 @@ int				main(int ac, char **av)
 	{
 		vars = init_vars(vars, ac, av);
 		checker(vars);
+		destroy_vars(vars);
 	}
 	return (0);
 }

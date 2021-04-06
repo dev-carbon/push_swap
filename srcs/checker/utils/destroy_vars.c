@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_prog.c                                        :+:      :+:    :+:   */
+/*   destroy_vars.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 13:37:18 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 13:41:03 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/06 23:53:53 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 23:53:56 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-int	exit_prog(int status, t_vars *vars)
+void	destroy_vars(t_vars *vars)
 {
-	if (status == EXIT_FAILURE)
-		ft_putstr_fd("Error\n", STDOUT_FILENO);
-	if (status == EXIT_SUCCESS)
-		ft_putstr_fd("Bye!\n", STDOUT_FILENO);
-	exit(status);
-	destroy_vars(vars);
-	return (0);
+	if (vars != NULL)
+	{
+		destroy_stack(vars->stack_a);
+		destroy_stack(vars->stack_b);
+		destroy_ops(vars->ops);
+		free(vars->args);
+		free(vars);
+		vars = NULL;
+	}
 }

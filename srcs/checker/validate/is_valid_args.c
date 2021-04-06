@@ -51,12 +51,12 @@ int			is_valid_args(int argc, char **argv)
 	while (++i < argc)
 	{
 		if (!is_valid_chars(argv[i]))
-			exit_prog(EXIT_FAILURE);
+			exit_prog(EXIT_FAILURE, NULL);
 		nbr = ft_atoi(argv[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
-			exit_prog(EXIT_FAILURE);
+			exit_prog(EXIT_FAILURE, NULL);
 		if (is_duplicate(nbr, argc, argv))
-			exit_prog(EXIT_FAILURE);
+			exit_prog(EXIT_FAILURE, NULL);
 	}
 	return (1);
 }
