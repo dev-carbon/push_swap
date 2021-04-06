@@ -17,6 +17,7 @@ typedef struct		s_stack
 {
 	int		*tab;
 	int		len;
+	int		initial_len;
 }					t_stack;
 
 typedef struct		s_action
