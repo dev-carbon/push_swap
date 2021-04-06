@@ -17,7 +17,7 @@ void	rotate(t_stack *stack)
 	int	i;
 	int	first;
 
-	if (!is_empty(stack))
+	if (!is_empty(stack) && stack->size > 1)
 	{
 		first = stack->tab[0];
 		i = -1;
