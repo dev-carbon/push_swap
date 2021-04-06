@@ -15,7 +15,7 @@
 t_stack		*create_stack(size_t size)
 {
 	t_stack	*stack;
-	
+
 	if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
 		return (NULL);
 	if (size > 0)

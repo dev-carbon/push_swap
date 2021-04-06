@@ -15,6 +15,7 @@
 t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 {
 	int	i;
+
 	if (!(vars = (t_vars *)malloc(sizeof(t_vars))))
 		return (NULL);
 	if (!(vars->args = (t_args*)malloc(sizeof(t_args))))

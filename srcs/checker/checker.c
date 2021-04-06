@@ -19,7 +19,7 @@ static t_ops	*store_action(t_ops *ops, char *label)
 
 	if (!(new = (t_ops *)malloc(sizeof(t_ops))))
 		return (NULL);
-	if (!(new->action =  (t_action *)malloc(sizeof(t_action))))
+	if (!(new->action = (t_action *)malloc(sizeof(t_action))))
 		return (NULL);
 	new->action->label = ft_strdup(label);
 	new->action->len = ft_strlen(label);
@@ -50,7 +50,7 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 	}
 }
 
-int		checker(t_vars *vars)
+int				checker(t_vars *vars)
 {
 	int			nbytes;
 	char		buf[BUF_SIZE];
