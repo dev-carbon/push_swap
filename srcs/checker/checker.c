@@ -62,10 +62,7 @@ int		checker(t_vars *vars)
 		if (is_valid_action(buf, nbytes))
 			vars->ops = store_action(vars->ops, buf);
 	}
-	printf("Initial Stack:\n-------------\n");
-	display_stack(vars->stack_a);
 	do_ops(vars, vars->ops);
-	display_stacks(*vars->stack_a, *vars->stack_b);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
 	return (0);
