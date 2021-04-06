@@ -42,9 +42,12 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 	t_action	*action;
 
 	current = operations;
+	ft_putstr("\nExec ");
 	while (current)
 	{
 		action = current->action;
+		ft_putstr(action->label);
+		ft_putstr(" ");
 		execute(vars, action);
 		current = current->next;
 	}
@@ -56,16 +59,21 @@ int		checker(t_vars *vars)
 	char		buf[BUF_SIZE];
 
 	ft_bzero(buf, BUF_SIZE);
+	printf("Initial Stack:\n-------------\n");
+	display_stack(vars->stack_a);
+	printf("Waiting for commands...\n\n");
 	while ((nbytes = read(STDIN_FILENO, buf, BUF_SIZE)))
 	{
 		buf[nbytes - 1] = '\0';
 		if (is_valid_action(buf, nbytes))
+		{
 			vars->ops = store_action(vars->ops, buf);
+			do_ops(vars, vars->ops);
+			ft_putstr("\b:\n-------\n");
+			display_stacks(*vars->stack_a, *vars->stack_b);
+			vars->ops = NULL;
+		}
 	}
-	printf("Initial Stack:\n-------------\n");
-	display_stack(vars->stack_a);
-	do_ops(vars, vars->ops);
-	display_stacks(*vars->stack_a, *vars->stack_b);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
 	return (0);

@@ -34,5 +34,5 @@ void	display_stacks(t_stack a, t_stack b)
 	}
 	printf("_ _\n");
 	printf("a b\n");
-	printf("-------------\n\n");
+	printf("---\n\n");
 }
