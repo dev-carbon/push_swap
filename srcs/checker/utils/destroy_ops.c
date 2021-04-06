@@ -17,14 +17,16 @@ void	destroy_ops(t_ops *ops)
 	t_ops	*current;
 	t_ops	*next;
 
-	current = ops;
-	while (current != NULL)
+	if (ops != NULL)
 	{
-		next = current->next;
-		free(current->action->label);
-		free(current->action);
-		free(current);
-		current = next;
+		current = ops;
+		while (current != NULL)
+		{
+			next = current->next;
+			free(current->action->label);
+			free(current->action);
+			free(current);
+			current = next;
+		}
 	}
-	
 }
