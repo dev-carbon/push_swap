@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/04 12:32:23 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:32:33 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/04/06 01:04:44 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,14 @@ static void		do_actions(t_stack **a, t_stack **b, t_action *actions)
 {
 	t_action	*queue;
 	t_action	*action;
-	char		*command;
 
 	queue = actions;
-	ft_putstr("Exec ");
 	while (queue)
 	{
 		action = queue;
-		command = ft_strjoin(action->label, " ");
-		ft_putstr(command);
 		execute(a, b, action);
 		queue = queue->next;
 	}
-	ft_putstr("\b:\n");
 }
 
 int				checker(t_stack *a, t_action *action)
@@ -67,12 +62,28 @@ int				checker(t_stack *a, t_action *action)
 		if (is_valid_action(buf, nbytes))
 			action = store_action(action, buf);
 	}
-	print_initial_stack(*a);
 	do_actions(&a, &b, action);
-	print_stack(*a, *b);
 	if (is_sorted(*a) && is_empty(*b))
 		ft_putstr("OK\n");
 	else
 		ft_putstr("KO\n");
+	return (0);
+}
+
+int				main(int ac, char **av)
+{
+	t_args		*args;
+	t_stack		*stack;
+	t_action	*action;
+
+	args = NULL;
+	stack = NULL;
+	action = NULL;
+	if (is_valid_args(ac, av))
+	{
+		args = init_args(args, ac, av);
+		stack = init_stack(stack, args);
+		checker(stack, action);
+	}
 	return (0);
 }
