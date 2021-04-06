@@ -1,28 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rotate.c                                           :+:      :+:    :+:   */
+/*   display_stacks.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 15:47:24 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 15:47:26 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 11:20:16 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 20:08:26 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "action.h"
+#include "util.h"
 
-void	rotate(t_stack *stack)
+void	display_stacks(t_stack a, t_stack b)
 {
 	int	i;
-	int	first;
 
-	if (!is_empty(*stack))
+	if (a.size > b.size)
 	{
-		first = stack->tab[0];
 		i = -1;
-		while (++i < stack->len - 1)
-			ft_swap(&stack->tab[i], &stack->tab[i + 1]);
-		stack->tab[stack->len - 1] = first;
+		while (++i < b.size)
+			printf("%d %d\n", a.tab[i], b.tab[i]);
+		while (i < a.size)
+			printf("%d\n", a.tab[i++]);
 	}
+	else
+	{
+		i = -1;
+		while (++i < a.size)
+			printf("%d %d\n", a.tab[i], b.tab[i]);
+		while (i < b.size)
+			printf("  %d\n", b.tab[i++]);
+	}
+	printf("_ _\n");
+	printf("a b\n");
+	printf("-------------\n\n");
 }

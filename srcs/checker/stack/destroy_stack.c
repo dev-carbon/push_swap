@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_args.c                                        :+:      :+:    :+:   */
+/*   destroy_stack.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 12:35:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 12:36:17 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/06 16:46:58 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 20:02:08 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
+#include "stack.h"
 
-t_args	*init_args(t_args *args, int argc, char **argv)
+void	destroy_stack(t_stack *stack)
 {
-	if (!(args = (t_args *)malloc(sizeof(t_args))))
-		return (NULL);
-	args->ac = argc - 1;
-	args->av = argv;
-	return (args);
+	if (stack != NULL)
+	{
+		free(stack->tab);
+		stack->tab = NULL;
+		free(stack);
+		stack = NULL;
+	}
 }

@@ -1,18 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_empty.c                                         :+:      :+:    :+:   */
+/*   rotate.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 15:01:59 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 15:02:18 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 15:47:24 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 15:47:26 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "stack.h"
 
-int	is_empty(t_stack stack)
+void	rotate(t_stack *stack)
 {
-	return (stack.len == 0);
+	int	i;
+	int	first;
+
+	if (!is_empty(stack))
+	{
+		first = stack->tab[0];
+		i = -1;
+		while (++i < stack->size - 1)
+			ft_swap(&stack->tab[i], &stack->tab[i + 1]);
+		stack->tab[stack->size - 1] = first;
+	}
 }

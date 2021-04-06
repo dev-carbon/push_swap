@@ -36,57 +36,54 @@ _IPURPLE	=	\e[45m
 _ICYAN		=	\e[46m
 _IWHITE		=	\e[47m
 
-CHECKER = checker
+CHECKER = 		checker
 
-PUSH_SWAP = push_swap
+PUSH_SWAP = 	push_swap
 
-CC = clang
+CC = 			clang
 
-CCFLAGS = -Wall -Wextra -Werror
+CCFLAGS = 		-Wall -Wextra -Werror -g3
 
 # SANITIZE = -g -fsanitize=address
 
-RM = rm -rf
+RM = 			rm -rf
 
-INCLUDES = -Ilibft/ \
-			-Iincludes/ \
-			-Isrcs/checker/init/ \
-			-Isrcs/checker/actions/ \
-			-Isrcs/checker/utils/ \
-			-Isrcs/checker/validate/ \
+INCLUDES = 		-I./libft/ \
+				-I./includes/ \
+				-I./srcs/checker/init/ \
+				-I./srcs/checker/stack/ \
+				-I./srcs/checker/utils/ \
+				-I./srcs/checker/validate/ \
 
-LIBS = -Llibft -lft
+LIBS = 			-Llibft -lft
 
-SRCS = srcs/checker/main.c \
-		$(wildcard srcs/checker/actions/*.c) \
-		$(wildcard srcs/checker/init/*.c) \
-		$(wildcard srcs/checker/utils/*.c) \
-		$(wildcard srcs/checker/validate/*.c) \
+SRCS_CHECKER =	$(wildcard ./srcs/checker/*.c) \
+				$(wildcard ./srcs/checker/init/*.c) \
+				$(wildcard ./srcs/checker/stack/*.c) \
+				$(wildcard ./srcs/checker/utils/*.c) \
+				$(wildcard ./srcs/checker/validate/*.c) \
 
-SRCS_BONUS = $(wildcard bonus/srcs/*.c)
+OBJS_CHECKER = 	$(SRCS_CHECKER: %.c=%.o)
 
-OBJS = $(SRCS: %.c=%.o)
 
-OBJS_BONUS = $(SRCS_BONUS: %.c=%.o)
+all: 			$(CHECKER) #$(PUSH_SWAP)
 
-all: $(CHECKER) $(PUSH_SWAP)
-
-$(CHECKER): $(OBJS)
-	@$(MAKE) --directory=libft
-	@$(CC) $(CCFLAGS) $(SANITIZE) $(INCLUDES) -o $@ $^ $(LIBS)
-	@echo "\nProgramm $(CHECKER) created."
+$(CHECKER): 	$(OBJS_CHECKER)
+				@$(MAKE) --directory=libft
+				@$(CC) $(CCFLAGS) $(SANITIZE) $(INCLUDES) -o $@ $^ $(LIBS)
+				@echo "\nProgramm $(CHECKER) created."
 
 %.o:
-	$(CC) $(CCFLAGS) -c $< -o $@ 
+				$(CC) $(CCFLAGS) -c $< -o $@ 
 
 clean:
-	@cd libft && $(MAKE) clean
-	@$(RM) *.o
+				@cd libft && $(MAKE) clean
+				@$(RM) *.o
 
-fclean: clean
-	@cd libft && $(MAKE) fclean
-	@$(RM) $(CHECKER) $(PUSH_SWAP)
+fclean: 		clean
+				@cd libft && $(MAKE) fclean
+				@$(RM) $(CHECKER) $(PUSH_SWAP)
 
-re: fclean all
+re: 			fclean all
 
-.PHONY: all bonus clean fclean re
+.PHONY: 		all bonus clean fclean re

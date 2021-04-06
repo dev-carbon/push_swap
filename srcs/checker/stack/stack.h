@@ -1,25 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   action.h                                           :+:      :+:    :+:   */
+/*   stack.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:11:48 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 11:11:50 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/06 19:18:07 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 19:18:09 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ACTION_H
-# define ACTION_H
+#ifndef STACK_H
+# define STACK_H
 
 # include "push_swap.h"
 
-void	swap(t_stack *stack);
-void	rotate(t_stack *stack);
-void	rev_rotate(t_stack *stack);
-t_stack	*push(t_stack *dst, t_stack *src);
-t_stack	*pop(t_stack *stack);
-void	execute(t_stack **a, t_stack **b, t_action *action);
+t_stack		*pop(t_stack *stack, int *top);
+t_stack		*push(t_stack *stack, int top);
+int			peek(t_stack *stack);
+int			is_empty(t_stack *stack);
+int			is_sorted(t_stack *stack);
+void		swap(t_stack *stack);
+void		rotate(t_stack *stack);
+void		rev_rotate(t_stack *stack);
+void		display_stack(t_stack *stack);
+void		destroy_stack(t_stack *stack);
+t_stack		*create_stack(size_t size);
 
 #endif

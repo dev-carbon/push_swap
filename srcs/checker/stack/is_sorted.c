@@ -10,15 +10,15 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "stack.h"
 
-int	is_sorted(t_stack stack)
+int	is_sorted(t_stack *stack)
 {
 	int	i;
 
 	i = -1;
-	while (++i < stack.len - 1)
-		if (stack.tab[i] > stack.tab[i + 1])
+	while (++i < stack->size - 1)
+		if (stack->tab[i] > stack->tab[i + 1])
 			return (0);
 	return (1);
 }

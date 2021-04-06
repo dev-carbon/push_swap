@@ -10,21 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "action.h"
+#include "stack.h"
 
-t_stack		*push(t_stack *dst, t_stack *src)
+t_stack		*push(t_stack *stack, int top)
 {
 	int		i;
-	t_stack	*tmp;
+	t_stack	*prev;
 
-	if (!is_empty(*src))
-	{
-		tmp = new_stack(dst->len + 1);
-		tmp->tab[0] = src->tab[0];
-		i = 0;
-		while (++i < tmp->len)
-			tmp->tab[i] = dst->tab[i - 1];
-		dst = tmp;
-	}
-	return (dst);
+	prev = stack;
+	stack = create_stack(prev->size + 1);
+	stack->tab[0] = top;
+	i = 0;
+	while (++i < stack->size)
+		stack->tab[i] = prev->tab[i - 1];
+	return (stack);
 }

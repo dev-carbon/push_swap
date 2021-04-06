@@ -20,10 +20,11 @@
 # include "struct.h"
 # include "const.h"
 # include "init.h"
+# include "stack.h"
 # include "util.h"
 # include "validate.h"
-# include "action.h"
 
-int	checker(t_stack *a, t_action *action);
+int		checker(t_vars *vars);
+void	execute(t_vars *vars, t_action *action);
 
 #endif

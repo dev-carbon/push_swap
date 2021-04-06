@@ -1,19 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   swap.c                                             :+:      :+:    :+:   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:16:08 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 11:16:11 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 15:47:36 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 15:47:39 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "action.h"
+#include "stack.h"
 
-void	swap(t_stack *stack)
+void	rev_rotate(t_stack *stack)
 {
-	if (!is_empty(*stack))
-		ft_swap(&stack->tab[0], &stack->tab[1]);
+	int	i;
+
+	if (!is_empty(stack))
+	{
+		i = stack->size - 1;
+		while (--i >= 0)
+			ft_swap(&stack->tab[i], &stack->tab[i + 1]);
+	}
 }

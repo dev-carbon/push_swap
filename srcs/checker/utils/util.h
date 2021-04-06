@@ -16,10 +16,6 @@
 # include "push_swap.h"
 
 int			exit_prog(int status);
-int			is_empty(t_stack stack);
-int			is_sorted(t_stack stack);
-void		print_initial_stack(t_stack stack);
-void		print_stack(t_stack stack_a, t_stack stack_b);
-t_stack		*new_stack(int len);
+void		display_stacks(t_stack stack_a, t_stack stack_b);
 
 #endif

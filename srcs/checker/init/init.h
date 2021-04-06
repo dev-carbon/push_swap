@@ -15,7 +15,7 @@
 
 # include "push_swap.h"
 
-t_args	*init_args(t_args *args, int argc, char **argv);
+t_vars	*init_vars(t_vars *vars, int argc, char **argv);
 t_stack	*init_stack(t_stack *stack, t_args *args);
 
 #endif

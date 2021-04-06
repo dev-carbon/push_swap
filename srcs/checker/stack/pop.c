@@ -1,26 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   new_stack.c                                        :+:      :+:    :+:   */
+/*   pop.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 13:32:41 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 13:32:43 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 14:29:09 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 14:29:10 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "stack.h"
 
-t_stack		*new_stack(int len)
+t_stack		*pop(t_stack *stack, int *top)
 {
-	t_stack	*stack;
+	int		i;
+	t_stack	*prev;
 
-	stack = (t_stack *)malloc(sizeof(t_stack));
-	if (len > 0)
-		stack->tab = (int *)malloc(sizeof(int) * len);
-	else
-		stack->tab = NULL;
-	stack->len = len;
+	if (!is_empty(stack))
+	{
+		prev = stack;
+		stack = create_stack(prev->size - 1);
+		i = -1;
+		while (++i < stack->size)
+			stack->tab[i] = prev->tab[i + 1];
+		*top = prev->tab[0];
+	}
 	return (stack);
 }
