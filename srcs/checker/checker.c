@@ -71,6 +71,9 @@ int				checker(t_vars *vars)
 			do_ops(vars, vars->ops);
 			ft_putstr("\b:\n-------\n");
 			display_stacks(*vars->stack_a, *vars->stack_b);
+			free(vars->ops->action->label);
+			free(vars->ops->action);
+			free(vars->ops);
 			vars->ops = NULL;
 		}
 	}
