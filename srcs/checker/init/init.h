@@ -6,7 +6,7 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:33:28 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 12:35:22 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/04/06 23:42:34 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@
 # include "push_swap.h"
 
 t_vars	*init_vars(t_vars *vars, int argc, char **argv);
-t_stack	*init_stack(t_stack *stack, t_args *args);
 
 #endif

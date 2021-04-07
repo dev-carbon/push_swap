@@ -1,24 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit_prog.c                                        :+:      :+:    :+:   */
+/*   destroy_ops.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 13:37:18 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 13:41:03 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/06 23:57:37 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 23:57:39 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "util.h"
 
-int	exit_prog(int status, t_vars *vars)
+void	destroy_ops(t_ops *ops)
 {
-	if (status == EXIT_FAILURE)
-		ft_putstr_fd("Error\n", STDOUT_FILENO);
-	if (status == EXIT_SUCCESS)
-		ft_putstr_fd("Bye!\n", STDOUT_FILENO);
-	exit(status);
-	destroy_vars(vars);
-	return (0);
+	t_ops	*current;
+	t_ops	*next;
+
+	if (ops != NULL)
+	{
+		current = ops;
+		while (current != NULL)
+		{
+			next = current->next;
+			free(current->action->label);
+			free(current->action);
+			free(current);
+			current = next;
+		}
+	}
 }

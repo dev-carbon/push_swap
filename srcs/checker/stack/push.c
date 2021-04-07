@@ -23,5 +23,6 @@ t_stack		*push(t_stack *stack, int top)
 	i = 0;
 	while (++i < stack->size)
 		stack->tab[i] = prev->tab[i - 1];
+	destroy_stack(prev);
 	return (stack);
 }

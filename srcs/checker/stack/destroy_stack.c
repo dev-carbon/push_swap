@@ -16,6 +16,7 @@ void	destroy_stack(t_stack *stack)
 {
 	if (stack != NULL)
 	{
+		ft_bzero(stack->tab, stack->size);
 		free(stack->tab);
 		stack->tab = NULL;
 		free(stack);

@@ -16,7 +16,7 @@ void	rev_rotate(t_stack *stack)
 {
 	int	i;
 
-	if (!is_empty(stack))
+	if (!is_empty(stack) && stack->size > 1)
 	{
 		i = stack->size - 1;
 		while (--i >= 0)

@@ -19,7 +19,7 @@ static t_ops	*store_action(t_ops *ops, char *label)
 
 	if (!(new = (t_ops *)malloc(sizeof(t_ops))))
 		return (NULL);
-	if (!(new->action =  (t_action *)malloc(sizeof(t_action))))
+	if (!(new->action = (t_action *)malloc(sizeof(t_action))))
 		return (NULL);
 	new->action->label = ft_strdup(label);
 	new->action->len = ft_strlen(label);
@@ -53,7 +53,7 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 	}
 }
 
-int		checker(t_vars *vars)
+int				checker(t_vars *vars)
 {
 	int			nbytes;
 	char		buf[BUF_SIZE];
@@ -65,7 +65,7 @@ int		checker(t_vars *vars)
 	while ((nbytes = read(STDIN_FILENO, buf, BUF_SIZE)))
 	{
 		buf[nbytes - 1] = '\0';
-		if (is_valid_action(buf, nbytes))
+		if (is_valid_action(buf, nbytes, vars))
 		{
 			vars->ops = store_action(vars->ops, buf);
 			do_ops(vars, vars->ops);

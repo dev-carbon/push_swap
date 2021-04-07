@@ -15,7 +15,9 @@
 
 # include "push_swap.h"
 
-int			exit_prog(int status);
+int			exit_prog(int status, t_vars *vars);
 void		display_stacks(t_stack stack_a, t_stack stack_b);
+void		destroy_vars(t_vars *vars);
+void		destroy_ops(t_ops *ops);
 
 #endif
