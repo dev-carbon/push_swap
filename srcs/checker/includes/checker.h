@@ -1,21 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   validate.h                                         :+:      :+:    :+:   */
+/*   checker.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:48:35 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/04 12:48:40 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:03:18 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/07 14:28:55 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef VALIDATE_H
-# define VALIDATE_H
+#ifndef CHECKER_H
+# define CHECKER_H
 
-# include "checker.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <limits.h>
+# include <time.h>
+# include "libft.h"
+# include "struct.h"
+# include "const.h"
+# include "init.h"
+# include "stack.h"
+# include "util.h"
+# include "validate.h"
 
-int		is_valid_args(int argc, char **zargv);
-int		is_valid_action(char *label, int nbytes, t_vars *vars);
+int		checker(t_vars *vars);
+void	execute(t_vars *vars, t_action *action);
 
 #endif

@@ -13,7 +13,7 @@
 #ifndef STACK_H
 # define STACK_H
 
-# include "push_swap.h"
+# include "checker.h"
 
 t_stack		*pop(t_stack *stack, int *top);
 t_stack		*push(t_stack *stack, int top);

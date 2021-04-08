@@ -20,7 +20,7 @@ int				main(int ac, char **av)
 	if (is_valid_args(ac, av))
 	{
 		vars = init_vars(vars, ac, av);
-		checker(vars);
+		push_swap(vars);
 		destroy_vars(vars);
 	}
 	return (0);

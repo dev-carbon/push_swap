@@ -13,7 +13,7 @@
 #ifndef UTIL_H
 # define UTIL_H
 
-# include "push_swap.h"
+# include "checker.h"
 
 int			exit_prog(int status, t_vars *vars);
 void		display_stacks(t_stack stack_a, t_stack stack_b);

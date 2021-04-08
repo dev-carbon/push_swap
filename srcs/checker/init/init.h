@@ -13,7 +13,7 @@
 #ifndef INIT_H
 # define INIT_H
 
-# include "push_swap.h"
+# include "checker.h"
 
 t_vars	*init_vars(t_vars *vars, int argc, char **argv);
 

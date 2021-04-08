@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "validate.h"
 
 static int	is_valid_chars(char *line)
 {

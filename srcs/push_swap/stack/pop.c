@@ -12,7 +12,7 @@
 
 #include "stack.h"
 
-t_stack		*pop(t_stack *stack, int *top)
+t_stack		*pop(t_stack *stack)
 {
 	int		i;
 	t_stack	*prev;
@@ -24,7 +24,6 @@ t_stack		*pop(t_stack *stack, int *top)
 		i = -1;
 		while (++i < stack->size)
 			stack->tab[i] = prev->tab[i + 1];
-		*top = prev->tab[0];
 		destroy_stack(prev);
 	}
 	return (stack);

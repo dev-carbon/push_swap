@@ -24,9 +24,12 @@ t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 	vars->args->av = argv;
 	vars->stack_a = create_stack(0);
 	vars->stack_b = create_stack(0);
-	i = vars->args->ac;
+	srand(time(NULL));
+	i = argc;
+	// i = ft_atoi(vars->args->av[1]);
 	while (--i > 0)
 		vars->stack_a = push(vars->stack_a, ft_atoi(vars->args->av[i]));
+		// vars->stack_a = push(vars->stack_a, rand() % 11);
 	vars->ops = NULL;
 	return (vars);
 }

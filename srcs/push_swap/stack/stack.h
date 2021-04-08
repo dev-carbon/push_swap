@@ -15,7 +15,7 @@
 
 # include "push_swap.h"
 
-t_stack		*pop(t_stack *stack, int *top);
+t_stack		*pop(t_stack *stack);
 t_stack		*push(t_stack *stack, int top);
 int			peek(t_stack *stack);
 int			is_empty(t_stack *stack);

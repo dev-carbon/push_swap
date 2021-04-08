@@ -34,15 +34,15 @@ static void	do_push(t_stack **dst, t_stack **src)
 {
 	int		top;
 
-	top = -1;
 	if (!is_empty(*src))
 	{
-		*src = pop(*src, &top);
+		top = peek(*src);
+		*src = pop(*src);
 		*dst = push(*dst, top);
 	}
 }
 
-void		execute(t_vars *vars, t_action *action)
+t_vars		*execute(t_vars *vars, t_action *action)
 {
 	if (ft_strncmp(action->label, "sa", action->len) == 0)
 		swap(vars->stack_a);
@@ -66,4 +66,5 @@ void		execute(t_vars *vars, t_action *action)
 		rev_rotate(vars->stack_b);
 	else if (ft_strncmp(action->label, "rrr", action->len) == 0)
 		rev_rotate_both(vars->stack_a, vars->stack_b);
+	return (vars);
 }
