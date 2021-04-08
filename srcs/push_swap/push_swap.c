@@ -21,42 +21,36 @@ t_action	*set_action(t_action *action, char *label)
 	return (action);
 }
 
-t_vars	*sort(t_vars *vars)
+t_vars			*sort(t_vars *vars)
 {
-	int	temp;
 	t_action	*action;
+	int			count;
 
 	action = NULL;
+	count = 0;
     while (!is_empty(vars->stack_a))
     {
-		write(1, "pb\n", 3);
-		// printf("what action ??\n");
-		temp = peek(vars->stack_a);
-        vars->stack_a = pop(vars->stack_a);
-		
-		
-		while (!is_empty(vars->stack_b) && peek(vars->stack_b) > temp)
+        while (!is_empty(vars->stack_b) &&
+			peek(vars->stack_a) < peek(vars->stack_b))
         {
-			write(1, "pa\n", 3);
 			action = set_action(action, PUSH_A);
 			execute(vars, action);
-			// display_stacks(*vars->stack_a, *vars->stack_b);
+			count += 1;
+			action = set_action(action, SWAP_A);
+			execute(vars, action);
+			count += 1;
         }
-		write(1, "pb\n", 3);
-		// action = set_action(action, PUSH_B);
-        // execute(vars, action);
-		
-		
-		vars->stack_b = push(vars->stack_b, temp);
-		// display_stacks(*vars->stack_a, *vars->stack_b);
+		action = set_action(action, PUSH_B);
+		execute(vars, action);
+		count += 1;
     }
 	while (!is_empty(vars->stack_b))
 	{
-		write(1, "pa\n", 3);
 		action = set_action(action, PUSH_A);
-        execute(vars, action);
-		// display_stacks(*vars->stack_a, *vars->stack_b);
+		execute(vars, action);
+		count += 1;
 	}
+	printf("Total ops: %d\n", count);
     return (vars);
 }
 
@@ -65,7 +59,6 @@ int				push_swap(t_vars *vars)
 	ft_putstr("Init stack:\n_\n");
 	display_stacks(*vars->stack_a, *vars->stack_b);
 	sort(vars);
-	ft_putstr("Sort result:\n_\n");
 	display_stacks(*vars->stack_a, *vars->stack_b);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");

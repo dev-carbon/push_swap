@@ -44,6 +44,7 @@ static void	do_push(t_stack **dst, t_stack **src)
 
 t_vars		*execute(t_vars *vars, t_action *action)
 {
+	ft_putstrnl(action->label);
 	if (ft_strncmp(action->label, "sa", action->len) == 0)
 		swap(vars->stack_a);
 	else if (ft_strncmp(action->label, "sb", action->len) == 0)
