@@ -33,5 +33,6 @@ void	display_stacks(t_stack a, t_stack b)
 			printf("  %d\n", b.tab[i++]);
 	}
 	printf("_ _\n");
-	printf("a b\n\n");
+	printf("a b\n");
+	printf("---\n");
 }

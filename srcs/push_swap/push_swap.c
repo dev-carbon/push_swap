@@ -50,15 +50,16 @@ t_vars			*sort(t_vars *vars)
 		execute(vars, action);
 		count += 1;
 	}
-	printf("Total ops: %d\n", count);
+	printf("\nTotal ops: %d\n---------\n", count);
     return (vars);
 }
 
 int				push_swap(t_vars *vars)
 {
-	ft_putstr("Init stack:\n_\n");
+	ft_putstr("Initial stacks:\n--------------\n");
 	display_stacks(*vars->stack_a, *vars->stack_b);
 	sort(vars);
+	ft_putstr("Final stacks:\n------------\n");
 	display_stacks(*vars->stack_a, *vars->stack_b);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
