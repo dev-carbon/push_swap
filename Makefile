@@ -10,17 +10,40 @@
 #                                                                              #
 # **************************************************************************** #
 
-CHECKER = 		checker
+ifneq (,$(findstring xterm,${TERM}))
+	BLACK        	:= $(shell tput -Txterm setaf 0)
+	RED          	:= $(shell tput -Txterm setaf 1)
+	GREEN        	:= $(shell tput -Txterm setaf 2)
+	YELLOW       	:= $(shell tput -Txterm setaf 3)
+	LIGHTPURPLE  	:= $(shell tput -Txterm setaf 4)
+	PURPLE       	:= $(shell tput -Txterm setaf 5)
+	BLUE			:= $(shell tput -Txterm setaf 6)
+	WHITE        	:= $(shell tput -Txterm setaf 7)
+	RESET 			:= $(shell tput -Txterm sgr0)
+	BOLD			:= $(shell tput -Txterm bold)
+else
+	BLACK        	:= ""
+	RED          	:= ""
+	GREEN        	:= ""
+	YELLOW       	:= ""
+	LIGHTPURPLE  	:= ""
+	PURPLE       	:= ""
+	BLUE        	:= ""
+	WHITE        	:= ""
+	RESET        	:= ""
+endif
 
-PUSH_SWAP = 	push_swap
+CHECKER =			checker
 
-CC = 			clang
+PUSH_SWAP = 		push_swap
 
-CCFLAGS = 		-Wall -Wextra -Werror -g3
+CC = 				clang
+
+CCFLAGS = 			-Wall -Wextra -Werror -g3
 
 # SANITIZE =		-g -fsanitize=address
 
-RM = 			rm -rf
+RM = 				rm -rf
 
 INC_CHECKER = 	-I./libft/ \
 				-I./srcs/checker/includes/ \
@@ -61,12 +84,12 @@ all: 			$(CHECKER) $(PUSH_SWAP)
 $(CHECKER): 	$(OBJS_CHECKER)
 				@$(MAKE) --directory=libft
 				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_CHECKER) -o $@ $^ $(LIBFT)
-				@echo "\nProgramm $(CHECKER) created."
+				@echo "${BOLD}${GREEN}\n[ Programm $(CHECKER) created. ]\n${RESET}"
 
 $(PUSH_SWAP): 	$(OBJS_PUSH_SWAP)
 				@$(MAKE) --directory=libft
 				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_PUSH_SWAP) -o $@ $^ $(LIBFT)
-				@echo "\nProgramm $(PUSH_SWAP) created."
+				@echo "${BOLD}${GREEN}\n[ Programm $(PUSH_SWAP) created. ]\n${RESET}"
 
 %.o:
 				$(CC) $(CCFLAGS) -c $< -o $@
