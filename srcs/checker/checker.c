@@ -55,9 +55,11 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 
 int				checker(t_vars *vars)
 {
+	int			count;
 	int			nbytes;
 	char		buf[BUF_SIZE];
 
+	count = 0;
 	ft_bzero(buf, BUF_SIZE);
 	printf("Initial Stack:\n-------------\n");
 	display_stack(vars->stack_a);
@@ -69,6 +71,7 @@ int				checker(t_vars *vars)
 		{
 			vars->ops = store_action(vars->ops, buf);
 			do_ops(vars, vars->ops);
+			count++;
 			ft_putstr("\b:\n-------\n");
 			display_stacks(*vars->stack_a, *vars->stack_b);
 			free(vars->ops->action->label);
@@ -79,5 +82,6 @@ int				checker(t_vars *vars)
 	}
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
+	printf("Total ops: %d\n", count);
 	return (0);
 }

@@ -29,7 +29,7 @@ t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 	// i = ft_atoi(vars->args->av[1]);
 	while (--i > 0)
 		vars->stack_a = push(vars->stack_a, ft_atoi(vars->args->av[i]));
-		// vars->stack_a = push(vars->stack_a, rand() % 11);
+		// vars->stack_a = push(vars->stack_a, rand() % 53);
 	vars->ops = NULL;
 	return (vars);
 }

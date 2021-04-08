@@ -30,20 +30,35 @@ t_vars			*sort(t_vars *vars)
 	count = 0;
     while (!is_empty(vars->stack_a))
     {
-        while (!is_empty(vars->stack_b) &&
+		if (is_empty(vars->stack_b) && is_sorted(vars->stack_a))
+			break;
+		// find a room for top of stack a
+		if (vars->stack_a->tab[0] > vars->stack_a->tab[1])
+		{
+			action = set_action(action, SWAP_A);
+			execute(vars, action);
+			count += 1;
+		}
+	    while (!is_empty(vars->stack_b) &&
 			peek(vars->stack_a) < peek(vars->stack_b))
         {
 			action = set_action(action, PUSH_A);
 			execute(vars, action);
 			count += 1;
+
 			action = set_action(action, SWAP_A);
 			execute(vars, action);
 			count += 1;
         }
-		action = set_action(action, PUSH_B);
-		execute(vars, action);
-		count += 1;
-    }
+		if (!is_sorted(vars->stack_a))
+		{
+			action = set_action(action, PUSH_B);
+			execute(vars, action);
+			count += 1;
+		}
+		else
+			break;
+	}
 	while (!is_empty(vars->stack_b))
 	{
 		action = set_action(action, PUSH_A);
@@ -60,7 +75,7 @@ int				push_swap(t_vars *vars)
 	display_stacks(*vars->stack_a, *vars->stack_b);
 	sort(vars);
 	ft_putstr("Final stacks:\n------------\n");
-	display_stacks(*vars->stack_a, *vars->stack_b);
+	// display_stacks(*vars->stack_a, *vars->stack_b);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
 	return (0);

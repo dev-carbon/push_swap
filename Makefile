@@ -56,7 +56,7 @@ OBJS_CHECKER = 	$(SRCS_CHECKER: %.c=%.o)
 
 OBJS_PUSH_SWAP =	$(SRCS_PUSH_SWAP: %.c=%.o)
 
-all: 			$(PUSH_SWAP) #$(CHECKER) $(PUSH_SWAP)
+all: 			$(CHECKER) $(PUSH_SWAP)
 
 $(CHECKER): 	$(OBJS_CHECKER)
 				@$(MAKE) --directory=libft
