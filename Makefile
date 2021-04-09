@@ -47,6 +47,7 @@ RM = 				rm -rf
 
 INC_CHECKER = 	-I./libft/ \
 				-I./srcs/checker/includes/ \
+				-I./srcs/checker/driver/ \
 				-I./srcs/checker/init/ \
 				-I./srcs/checker/stack/ \
 				-I./srcs/checker/utils/ \
@@ -54,6 +55,7 @@ INC_CHECKER = 	-I./libft/ \
 
 INC_PUSH_SWAP =	-I./libft/ \
 				-I./srcs/push_swap/includes/ \
+				-I./srcs/push_swap/driver/ \
 				-I./srcs/push_swap/init/ \
 				-I./srcs/push_swap/stack/ \
 				-I./srcs/push_swap/sort/ \
@@ -62,13 +64,13 @@ INC_PUSH_SWAP =	-I./libft/ \
 
 LIBFT = 			-Llibft -lft
 
-SRCS_CHECKER =	$(wildcard ./srcs/checker/*.c) \
+SRCS_CHECKER =	$(wildcard ./srcs/checker/driver/*.c) \
 				$(wildcard ./srcs/checker/init/*.c) \
 				$(wildcard ./srcs/checker/stack/*.c) \
 				$(wildcard ./srcs/checker/utils/*.c) \
 				$(wildcard ./srcs/checker/validate/*.c) \
 
-SRCS_PUSH_SWAP =	$(wildcard ./srcs/push_swap/*.c) \
+SRCS_PUSH_SWAP =	$(wildcard ./srcs/push_swap/driver/*.c) \
 					$(wildcard ./srcs/push_swap/init/*.c) \
 					$(wildcard ./srcs/push_swap/stack/*.c) \
 					$(wildcard ./srcs/push_swap/sort/*.c) \

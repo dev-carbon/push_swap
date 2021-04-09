@@ -37,7 +37,8 @@ static void	do_push(t_stack **dst, t_stack **src)
 	top = -1;
 	if (!is_empty(*src))
 	{
-		*src = pop(*src, &top);
+		top = peek(*src);
+		*src = pop(*src);
 		*dst = push(*dst, top);
 	}
 }
