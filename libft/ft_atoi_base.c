@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 int		is_valid(char *str, char *base)
 {
@@ -20,8 +19,8 @@ int		is_valid(char *str, char *base)
 	int	count;
 
 	if (str == NULL || *str == '\0')
-		retur (0);
-	if (ft_strlen(base) ==  1)
+		return (0);
+	if (ft_strlen(base) == 1)
 		return (0);
 	i = -1;
 	while (str[++i] != '\0')
@@ -77,7 +76,6 @@ int		ft_atoi_base(char *str, char *base)
 			nbr = nbr + pos * get_power(base_len, nbr_len - 1);
 			nbr_len -= 1;
 		}
-		// nbr *= sign;
 		return (nbr);
 	}
 	return (0);

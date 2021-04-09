@@ -15,19 +15,19 @@
 
 # define BUF_SIZE 5
 
-# define LABEL_MAX_LEN 4
+# define LABEL_MAX_LEN 3
 # define LABEL_MIN_LEN 2
 
-# define SWAP_A "sa"
-# define SWAP_B "sb"
-# define SWAP_AB "ss"
-# define PUSH_A "pa"
-# define PUSH_B "pb"
-# define ROTATE_A "ra"
-# define ROTATE_B "rb"
-# define ROTATE_AB "rr"
-# define REV_ROTATE_A "rra"
-# define REV_ROTATE_B "rrb"
-# define REV_ROTATE_AB "rrr"
+# define SWAP_A "sa\n"
+# define SWAP_B "sb\n"
+# define SWAP_AB "ss\n"
+# define PUSH_A "pa\n"
+# define PUSH_B "pb\n"
+# define ROTATE_A "ra\n"
+# define ROTATE_B "rb\n"
+# define ROTATE_AB "rr\n"
+# define REV_ROTATE_A "rra\n"
+# define REV_ROTATE_B "rrb\n"
+# define REV_ROTATE_AB "rrr\n"
 
 #endif

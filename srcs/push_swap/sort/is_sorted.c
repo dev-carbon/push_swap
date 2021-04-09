@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   is_sorted.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/01 23:51:27 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/01 23:51:41 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 23:41:01 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/05 23:41:05 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
+#include "sort.h"
 
-int	main(int ac, char **av)
+int	is_sorted(t_stack *stack)
 {
-	int		nbr;
+	int	i;
 
-	if (ac == 3)
-	{
-		nbr = ft_atoi_base(av[1], av[2]);
-		printf("nbr=%d\n", nbr);
-	}
-	return (0);
+	i = -1;
+	while (++i < stack->size - 1)
+		if (stack->tab[i] > stack->tab[i + 1])
+			return (0);
+	return (1);
 }

@@ -12,13 +12,11 @@
 
 #include "validate.h"
 
-int		is_valid_action(char *label, int nbytes, t_vars *vars)
+int		is_valid_action(char *label, t_vars *vars)
 {
 	int	len;
 
-	if (nbytes > BUF_SIZE)
-		exit_prog(EXIT_FAILURE, vars);
-	len = (int)ft_strlen(label);
+	len = ft_strlen(label);
 	if (len < LABEL_MIN_LEN || len > LABEL_MAX_LEN)
 		exit_prog(EXIT_FAILURE, vars);
 	if (ft_strncmp(label, SWAP_A, len) != 0 &&

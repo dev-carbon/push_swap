@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/07 15:49:03 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/07 15:49:05 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/09 06:02:44 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/09 06:02:50 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 # include "push_swap.h"
 
-void	quick_sort(t_stack *stack, int low, int high);
-void	insertion_sort(t_stack *stack_a, t_stack *stack_b);
+int			is_sorted(t_stack *stack);
+t_vars		*sort(t_vars *vars);
+t_action	*set_action(t_action *action, char *label);
 
 #endif

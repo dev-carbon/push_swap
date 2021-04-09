@@ -62,7 +62,7 @@ INC_PUSH_SWAP =	-I./libft/ \
 				-I./srcs/push_swap/utils/ \
 				-I./srcs/push_swap/validate/ \
 
-LIBFT = 			-Llibft -lft
+LIBFT = 		-Llibft -lft
 
 SRCS_CHECKER =	$(wildcard ./srcs/checker/driver/*.c) \
 				$(wildcard ./srcs/checker/init/*.c) \

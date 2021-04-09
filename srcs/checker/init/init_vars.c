@@ -14,7 +14,8 @@
 
 t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 {
-	int	i;
+	int		size;
+	char	**split;
 
 	if (!(vars = (t_vars *)malloc(sizeof(t_vars))))
 		return (NULL);
@@ -24,10 +25,10 @@ t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 	vars->args->av = argv;
 	vars->stack_a = create_stack(0);
 	vars->stack_b = create_stack(0);
-	// srand(time(NULL));
-	i = vars->args->ac;
-	while (--i > 0)
-		vars->stack_a = push(vars->stack_a, ft_atoi(vars->args->av[i]));
+	split = ft_split(argv[1], ' ');
+	size = ft_split_len(split);
+	while (--size >= 0)
+		vars->stack_a = push(vars->stack_a, ft_atoi(split[size]));
 	vars->ops = NULL;
 	return (vars);
 }

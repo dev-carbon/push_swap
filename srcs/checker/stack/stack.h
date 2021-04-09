@@ -19,7 +19,6 @@ t_stack		*pop(t_stack *stack);
 t_stack		*push(t_stack *stack, int top);
 int			peek(t_stack *stack);
 int			is_empty(t_stack *stack);
-int			is_sorted(t_stack *stack);
 void		swap(t_stack *stack);
 void		rotate(t_stack *stack);
 void		rev_rotate(t_stack *stack);

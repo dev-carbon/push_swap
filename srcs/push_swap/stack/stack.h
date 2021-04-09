@@ -6,7 +6,7 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/06 19:18:07 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 19:18:09 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/04/09 06:09:19 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ t_stack		*pop(t_stack *stack);
 t_stack		*push(t_stack *stack, int top);
 int			peek(t_stack *stack);
 int			is_empty(t_stack *stack);
-int			is_sorted(t_stack *stack);
 void		swap(t_stack *stack);
 void		rotate(t_stack *stack);
 void		rev_rotate(t_stack *stack);

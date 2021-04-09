@@ -16,6 +16,6 @@
 # include "push_swap.h"
 
 int		is_valid_args(int argc, char **argv);
-int		is_valid_action(char *label, int nbytes, t_vars *vars);
+int		is_valid_action(char *label, t_vars *vars);
 
 #endif

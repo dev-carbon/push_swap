@@ -12,6 +12,17 @@
 
 #include "checker.h"
 
+static int	is_sorted(t_stack *stack)
+{
+	int	i;
+
+	i = -1;
+	while (++i < stack->size - 1)
+		if (stack->tab[i] > stack->tab[i + 1])
+			return (0);
+	return (1);
+}
+
 static t_ops	*store_action(t_ops *ops, char *label)
 {
 	t_ops *last;
@@ -42,12 +53,9 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 	t_action	*action;
 
 	current = operations;
-	ft_putstr("\nExec ");
 	while (current)
 	{
 		action = current->action;
-		ft_putstr(action->label);
-		ft_putstr(" ");
 		execute(vars, action);
 		current = current->next;
 	}
@@ -55,33 +63,16 @@ static void		do_ops(t_vars *vars, t_ops *operations)
 
 int				checker(t_vars *vars)
 {
-	int			count;
-	int			nbytes;
-	char		buf[BUF_SIZE];
+	int			ret;
+	char		*buf;
 
-	count = 0;
-	ft_bzero(buf, BUF_SIZE);
-	printf("Initial Stack:\n-------------\n");
-	display_stack(vars->stack_a);
-	printf("Waiting for commands...\n\n");
-	while ((nbytes = read(STDIN_FILENO, buf, BUF_SIZE)))
+	while ((ret = get_next_line(STDIN_FILENO, &buf)) > 0)
 	{
-		buf[nbytes - 1] = '\0';
-		if (is_valid_action(buf, nbytes, vars))
-		{
+		if (is_valid_action(buf, vars))
 			vars->ops = store_action(vars->ops, buf);
-			do_ops(vars, vars->ops);
-			count++;
-			ft_putstr("\b:\n-------\n");
-			display_stacks(*vars->stack_a, *vars->stack_b);
-			free(vars->ops->action->label);
-			free(vars->ops->action);
-			free(vars->ops);
-			vars->ops = NULL;
-		}
 	}
+	do_ops(vars, vars->ops);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
-	printf("Total ops: %d\n", count);
 	return (0);
 }

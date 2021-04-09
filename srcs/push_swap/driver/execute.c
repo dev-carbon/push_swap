@@ -44,28 +44,28 @@ static void	do_push(t_stack **dst, t_stack **src)
 
 t_vars		*execute(t_vars *vars, t_action *action)
 {
-	ft_putstrnl(action->label);
-	if (ft_strncmp(action->label, "sa", action->len) == 0)
+	write(1, action->label, LABEL_MAX_LEN);
+	if (ft_strncmp(action->label, SWAP_A, action->len) == 0)
 		swap(vars->stack_a);
-	else if (ft_strncmp(action->label, "sb", action->len) == 0)
+	else if (ft_strncmp(action->label, SWAP_B, action->len) == 0)
 		swap(vars->stack_b);
-	else if (ft_strncmp(action->label, "ss", action->len) == 0)
+	else if (ft_strncmp(action->label, SWAP_AB, action->len) == 0)
 		swap_both(vars->stack_a, vars->stack_b);
-	else if (ft_strncmp(action->label, "pa", action->len) == 0)
+	else if (ft_strncmp(action->label, PUSH_A, action->len) == 0)
 		do_push(&vars->stack_a, &vars->stack_b);
-	else if (ft_strncmp(action->label, "pb", action->len) == 0)
+	else if (ft_strncmp(action->label, PUSH_B, action->len) == 0)
 		do_push(&vars->stack_b, &vars->stack_a);
-	else if (ft_strncmp(action->label, "ra", action->len) == 0)
+	else if (ft_strncmp(action->label, ROTATE_A, action->len) == 0)
 		rotate(vars->stack_a);
-	else if (ft_strncmp(action->label, "rb", action->len) == 0)
+	else if (ft_strncmp(action->label, ROTATE_B, action->len) == 0)
 		rotate(vars->stack_b);
-	else if (ft_strncmp(action->label, "rr", action->len) == 0)
+	else if (ft_strncmp(action->label, ROTATE_AB, action->len) == 0)
 		rotate_both(vars->stack_a, vars->stack_b);
-	else if (ft_strncmp(action->label, "rra", action->len) == 0)
+	else if (ft_strncmp(action->label, REV_ROTATE_A, action->len) == 0)
 		rev_rotate(vars->stack_a);
-	else if (ft_strncmp(action->label, "rrb", action->len) == 0)
+	else if (ft_strncmp(action->label, REV_ROTATE_B, action->len) == 0)
 		rev_rotate(vars->stack_b);
-	else if (ft_strncmp(action->label, "rrr", action->len) == 0)
+	else if (ft_strncmp(action->label, REV_ROTATE_AB, action->len) == 0)
 		rev_rotate_both(vars->stack_a, vars->stack_b);
 	return (vars);
 }
