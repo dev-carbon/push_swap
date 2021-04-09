@@ -86,12 +86,12 @@ all: 			$(CHECKER) $(PUSH_SWAP)
 $(CHECKER): 	$(OBJS_CHECKER)
 				@$(MAKE) --directory=libft
 				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_CHECKER) -o $@ $^ $(LIBFT)
-				@echo "${BOLD}${GREEN}\n[ Programm $(CHECKER) created. ]\n${RESET}"
+				@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
 
 $(PUSH_SWAP): 	$(OBJS_PUSH_SWAP)
 				@$(MAKE) --directory=libft
 				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_PUSH_SWAP) -o $@ $^ $(LIBFT)
-				@echo "${BOLD}${GREEN}\n[ Programm $(PUSH_SWAP) created. ]\n${RESET}"
+				@echo "${BOLD}${BLUE}\nProgramm $(PUSH_SWAP) created.\n${RESET}"
 
 %.o:
 				$(CC) $(CCFLAGS) -c $< -o $@

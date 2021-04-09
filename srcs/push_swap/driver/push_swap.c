@@ -32,7 +32,6 @@ t_vars			*sort(t_vars *vars)
     {
 		if (is_empty(vars->stack_b) && is_sorted(vars->stack_a))
 			break;
-		// find a room for top of stack a
 		if (vars->stack_a->tab[0] > vars->stack_a->tab[1])
 		{
 			action = set_action(action, SWAP_A);

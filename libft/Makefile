@@ -10,9 +10,36 @@
 #                                                                              #
 # **************************************************************************** #
 
+ifneq (,$(findstring xterm,${TERM}))
+	BLACK        	:= $(shell tput -Txterm setaf 0)
+	RED          	:= $(shell tput -Txterm setaf 1)
+	GREEN        	:= $(shell tput -Txterm setaf 2)
+	YELLOW       	:= $(shell tput -Txterm setaf 3)
+	LIGHTPURPLE  	:= $(shell tput -Txterm setaf 4)
+	PURPLE       	:= $(shell tput -Txterm setaf 5)
+	BLUE			:= $(shell tput -Txterm setaf 6)
+	WHITE        	:= $(shell tput -Txterm setaf 7)
+	RESET 			:= $(shell tput -Txterm sgr0)
+	BOLD			:= $(shell tput -Txterm bold)
+else
+	BLACK        	:= ""
+	RED          	:= ""
+	GREEN        	:= ""
+	YELLOW       	:= ""
+	LIGHTPURPLE  	:= ""
+	PURPLE       	:= ""
+	BLUE        	:= ""
+	WHITE        	:= ""
+	RESET        	:= ""
+endif
+
 NAME = libft.a
 
+CC = clang
+
 CFLAGS = -Wall -Werror -Wextra
+
+LIB = ar rc
 
 SRCS = get_next_line.c \
 	ft_swap.c \
@@ -91,22 +118,20 @@ OBJ_BONUS = $(BONUS:.c=.o)
 all: bonus
 
 bonus: $(OBJ) $(OBJ_BONUS)
-	@ar rc $(NAME) $^
-	@ranlib $(NAME)
-	@echo $(NAME) created.
+	@$(LIB) $(NAME) $^
+	@echo "${BOLD}${GREEN}\n${NAME} created.\n${RESET}"
 
 $(NAME):
-	gcc $(CFLAGS) -c $(SRCS)
-	ar rc $(NAME) $(OBJ)
-	@echo $(NAME) created.
+	@$(CC) $(CFLAGS) -c $(SRCS)
+	@$(LIB) $(NAME) $(OBJ)
 
 clean:
 	@/bin/rm -rf $(OBJ) $(OBJ_BONUS)
-	@echo Cleaned libft object files.
+	@echo "${BOLD}${YELLOW}\nCleaned libft object files.\n${RESET}"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo $(NAME) Removed.
+	@echo "${BOLD}${YELLOW}${NAME} removed.\n${RESET}"
 
 
 re: fclean all
