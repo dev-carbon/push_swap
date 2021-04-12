@@ -41,69 +41,84 @@ CC = 				clang
 
 CCFLAGS = 			-Wall -Wextra -Werror -g3
 
-# SANITIZE =		-g -fsanitize=address
+SANITIZE =		-g -fsanitize=address
 
 RM = 				rm -rf
 
-INC_CHECKER = 	-I./libft/ \
-				-I./srcs/checker/includes/ \
-				-I./srcs/checker/driver/ \
-				-I./srcs/checker/init/ \
-				-I./srcs/checker/stack/ \
-				-I./srcs/checker/utils/ \
-				-I./srcs/checker/validate/ \
+INC_COMMON =		-I./libft/ \
+					-I./includes/ \
+					-I./srcs/init/ \
+					-I./srcs/stack/ \
+					-I./srcs/utils/ \
+					-I./srcs/validate/ \
 
-INC_PUSH_SWAP =	-I./libft/ \
-				-I./srcs/push_swap/includes/ \
-				-I./srcs/push_swap/driver/ \
-				-I./srcs/push_swap/init/ \
-				-I./srcs/push_swap/stack/ \
-				-I./srcs/push_swap/sort/ \
-				-I./srcs/push_swap/utils/ \
-				-I./srcs/push_swap/validate/ \
+INC_CHECKER =		-I./srcs/drivers/checker \
 
-LIBFT = 		-Llibft -lft
+INC_PUSH_SWAP =		-I./srcs/drivers/push_swap \
+					-I./srcs/sort/ \
 
-SRCS_CHECKER =	$(wildcard ./srcs/checker/driver/*.c) \
-				$(wildcard ./srcs/checker/init/*.c) \
-				$(wildcard ./srcs/checker/stack/*.c) \
-				$(wildcard ./srcs/checker/utils/*.c) \
-				$(wildcard ./srcs/checker/validate/*.c) \
+INC_BONUS =			-I./srcs/bonus/drivers/checker \
+					-I./srcs/bonus/drivers/push_swap \
 
-SRCS_PUSH_SWAP =	$(wildcard ./srcs/push_swap/driver/*.c) \
-					$(wildcard ./srcs/push_swap/init/*.c) \
-					$(wildcard ./srcs/push_swap/stack/*.c) \
-					$(wildcard ./srcs/push_swap/sort/*.c) \
-					$(wildcard ./srcs/push_swap/utils/*.c) \
-					$(wildcard ./srcs/push_swap/validate/*.c) \
+LIBFT = 			-Llibft -lft
 
-OBJS_CHECKER = 	$(SRCS_CHECKER: %.c=%.o)
+SRCS_COMMON =		$(wildcard ./srcs/init/*.c) \
+					$(wildcard ./srcs/stack/*.c) \
+					$(wildcard ./srcs/utils/*.c) \
+					$(wildcard ./srcs/validate/*.c) \
+
+SRCS_CHECKER =		$(wildcard ./srcs/drivers/checker/checker.c) \
+
+SRCS_PUSH_SWAP =	$(wildcard ./srcs/drivers/push_swap/push_swap.c) \
+					$(wildcard ./srcs/sort/*.c) \
+
+SRCS_CHECKER_BONUS =	$(wildcard ./srcs/drivers/checker_bonus.c) \
+
+SRCS_PUSH_SWAP_BONUS =	$(wildcard ./srcs/drivers/push_swap_bonus.c) \
+
+OBJS_COMMON =		$(SRCS_COMMON: %.c=%.o)
+
+OBJS_CHECKER = 		$(SRCS_CHECKER: %.c=%.o)
 
 OBJS_PUSH_SWAP =	$(SRCS_PUSH_SWAP: %.c=%.o)
 
-all: 			$(CHECKER) $(PUSH_SWAP)
+OBJS_BONUS = 		$(SRCS_BONUS: %.c=%.o)
 
-$(CHECKER): 	$(OBJS_CHECKER)
-				@$(MAKE) --directory=libft
-				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_CHECKER) -o $@ $^ $(LIBFT)
-				@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
+all: 				$(CHECKER) $(PUSH_SWAP)
 
-$(PUSH_SWAP): 	$(OBJS_PUSH_SWAP)
-				@$(MAKE) --directory=libft
-				@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_PUSH_SWAP) -o $@ $^ $(LIBFT)
-				@echo "${BOLD}${BLUE}\nProgramm $(PUSH_SWAP) created.\n${RESET}"
+bonus:				$(CHECKER_BONUS) $(PUSH_SWAP_BONUS)
+
+$(CHECKER): 		$(OBJS_COMMON) $(OBJS_CHECKER)
+					@$(MAKE) --directory=libft
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_CHECKER) -o $@ $^ $(LIBFT)
+					@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
+
+$(PUSH_SWAP): 		$(OBJS_COMMON) $(OBJS_PUSH_SWAP)
+					@$(MAKE) --directory=libft
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_PUSH_SWAP) -o $@ $^ $(LIBFT)
+					@echo "${BOLD}${BLUE}\nProgramm $(PUSH_SWAP) created.\n${RESET}"
+
+$(CHECKER_BONUS): 	$(OBJS_COMMON) $(OBJS_CHECKER_BONUS)
+					@$(MAKE) --directory=libft
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_BONUS) -o $@ $^ $(LIBFT)
+					@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
+
+$(PUSH_SWAP_BONUS): $(OBJS_COMMON) $(OBJS_PUSH_SWAP_BONUS)
+					@$(MAKE) --directory=libft
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_BONUS) -o $@ $^ $(LIBFT)
+					@echo "${BOLD}${BLUE}\nProgramm $(PUSH_SWAP) created.\n${RESET}"
 
 %.o:
-				$(CC) $(CCFLAGS) -c $< -o $@
+					$(CC) $(CCFLAGS) -c $< -o $@
 
 clean:
-				@cd libft && $(MAKE) clean
-				@$(RM) *.o
+					@cd libft && $(MAKE) clean
+					@$(RM) *.o
 
-fclean: 		clean
-				@cd libft && $(MAKE) fclean
-				@$(RM) $(CHECKER) $(PUSH_SWAP)
+fclean: 			clean
+					@cd libft && $(MAKE) fclean
+					@$(RM) $(CHECKER) $(PUSH_SWAP)
 
-re: 			fclean all
+re:		 			fclean all
 
-.PHONY: 		all bonus clean fclean re
+.PHONY: 			all bonus clean fclean re
