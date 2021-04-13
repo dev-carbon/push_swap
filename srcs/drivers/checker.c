@@ -12,7 +12,7 @@
 
 #include "include.h"
 
-static t_operation	*store_operation(t_operation *ops, char *label)
+static t_operation	*store_ops(t_operation *ops, char *label)
 {
 	t_operation *last;
 	t_operation *new;
@@ -36,7 +36,7 @@ static t_operation	*store_operation(t_operation *ops, char *label)
 	return (ops);
 }
 
-static void		do_operations(t_vars *vars, t_operation *operations)
+static void		do_ops(t_vars *vars, t_operation *operations)
 {
 	t_operation		*current;
 	t_action	*action;
@@ -58,11 +58,11 @@ static int		checker(t_vars *vars)
 	while ((ret = get_next_line(STDIN_FILENO, &buf)) > 0)
 	{
 		if (is_valid_operation(buf, vars))
-			vars->ops = store_operation(vars->ops, buf);
+			vars->ops = store_ops(vars->ops, buf);
 		free(buf);
 	}
 	free(buf);
-	do_operations(vars, vars->ops);
+	do_ops(vars, vars->ops);
 	is_sorted(vars->stack_a) && is_empty(vars->stack_b) ?
 		ft_putstr("OK\n") : ft_putstr("KO\n");
 	return (0);

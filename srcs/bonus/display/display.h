@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_ops.c                                      :+:      :+:    :+:   */
+/*   display.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 23:57:37 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 23:57:39 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/13 11:56:47 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/13 11:56:50 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#ifndef DISPLAY_H
+# define DISPLAY_H
 
-t_operation	*destroy_ops(t_operation *ops)
-{
-	t_operation	*current;
-	t_operation	*next;
+# include "include.h"
 
-	if (ops != NULL)
-	{
-		current = ops;
-		while (current != NULL)
-		{
-			next = current->next;
-			free(current->action->label);
-			current->action->label = NULL;
-			free(current->action);
-			current->action = NULL;
-			free(current);
-			current = next;
-		}
-		ops = NULL;
-	}
-	return (ops);
-}
+
+void	display_stacks(t_stack stack_a, t_stack stack_b);
+void	display_initial_stacks(t_vars *vars);
+void	display_final_stacks(t_vars *vars);
+void	display_debug_data(t_vars *vars, int count);
+
+#endif

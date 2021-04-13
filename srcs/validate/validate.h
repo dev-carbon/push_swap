@@ -15,6 +15,8 @@
 
 # include "include.h"
 
+int		is_valid_digits(int ac, char **av);
+int		is_valid_list(int ac, char **av);
 int		is_valid_args(int argc, char **argv);
 int		is_valid_operation(char *label, t_vars *vars);
 

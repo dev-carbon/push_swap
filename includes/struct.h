@@ -37,16 +37,11 @@ typedef struct		s_args
 	char			**av;
 }					t_args;
 
-typedef struct		s_option
-{
-	int				label;
-}					t_option;
-
 typedef struct		s_vars
 {
+	int				options[3];
 	t_args			*args;
 	t_operation		*ops;
-	t_option		options[3];
 	t_stack			*stack_a;
 	t_stack			*stack_b;
 }					t_vars;

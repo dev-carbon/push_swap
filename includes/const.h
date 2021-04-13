@@ -30,8 +30,11 @@
 # define REV_ROTATE_B "rrb\n"
 # define REV_ROTATE_AB "rrr\n"
 
-# define VERBOSE 1
-# define COLOURS 2
-# define ITERATE 3
+# define ON 1
+# define OFF 0
+
+# define VERBOSE 0
+# define COLOURS 1
+# define ITERATE 2
 
 #endif

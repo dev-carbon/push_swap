@@ -35,46 +35,43 @@ endif
 
 CHECKER =			checker
 
+CHECKER_BONUS = 	checker_bonus
+
 PUSH_SWAP = 		push_swap
 
 CC = 				clang
 
 CCFLAGS = 			-Wall -Wextra -Werror -g3
 
-SANITIZE =		-g -fsanitize=address
+SANITIZE =			-g -fsanitize=address
 
 RM = 				rm -rf
 
-INC_COMMON =		-I./libft/ \
+INC =				-I./libft/ \
 					-I./includes/ \
 					-I./srcs/init/ \
 					-I./srcs/stack/ \
 					-I./srcs/utils/ \
 					-I./srcs/validate/ \
 
-INC_CHECKER =		-I./srcs/drivers/checker \
 
 INC_PUSH_SWAP =		-I./srcs/drivers/push_swap \
 					-I./srcs/sort/ \
 
-INC_BONUS =			-I./srcs/bonus/drivers/checker \
-					-I./srcs/bonus/drivers/push_swap \
+INC_COMMON_BONUS =	-I./srcs/bonus/display/ \
+					-I./srcs/bonus/init/ \
+					-I./srcs/bonus/validate/ \
 
 LIBFT = 			-Llibft -lft
 
-SRCS_COMMON =		$(wildcard ./srcs/init/*.c) \
-					$(wildcard ./srcs/stack/*.c) \
+SRCS_COMMON =		$(wildcard ./srcs/stack/*.c) \
+					$(wildcard ./srcs/init/*.c) \
 					$(wildcard ./srcs/utils/*.c) \
 					$(wildcard ./srcs/validate/*.c) \
 
-SRCS_CHECKER =		$(wildcard ./srcs/drivers/checker/checker.c) \
+SRCS_CHECKER =		./srcs/drivers/checker.c
 
-SRCS_PUSH_SWAP =	$(wildcard ./srcs/drivers/push_swap/push_swap.c) \
-					$(wildcard ./srcs/sort/*.c) \
-
-SRCS_CHECKER_BONUS =	$(wildcard ./srcs/drivers/checker_bonus.c) \
-
-SRCS_PUSH_SWAP_BONUS =	$(wildcard ./srcs/drivers/push_swap_bonus.c) \
+SRCS_PUSH_SWAP =	./srcs/drivers/push_swap.c
 
 OBJS_COMMON =		$(SRCS_COMMON: %.c=%.o)
 
@@ -82,15 +79,13 @@ OBJS_CHECKER = 		$(SRCS_CHECKER: %.c=%.o)
 
 OBJS_PUSH_SWAP =	$(SRCS_PUSH_SWAP: %.c=%.o)
 
-OBJS_BONUS = 		$(SRCS_BONUS: %.c=%.o)
+all: 				$(CHECKER) #$(PUSH_SWAP)
 
-all: 				$(CHECKER) $(PUSH_SWAP)
-
-bonus:				$(CHECKER_BONUS) $(PUSH_SWAP_BONUS)
+bonus:				$(CHECKER_BONUS) #$(PUSH_SWAP_BONUS)
 
 $(CHECKER): 		$(OBJS_COMMON) $(OBJS_CHECKER)
 					@$(MAKE) --directory=libft
-					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_CHECKER) -o $@ $^ $(LIBFT)
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC) -o $@ $^ $(LIBFT)
 					@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
 
 $(PUSH_SWAP): 		$(OBJS_COMMON) $(OBJS_PUSH_SWAP)
@@ -101,7 +96,7 @@ $(PUSH_SWAP): 		$(OBJS_COMMON) $(OBJS_PUSH_SWAP)
 $(CHECKER_BONUS): 	$(OBJS_COMMON) $(OBJS_CHECKER_BONUS)
 					@$(MAKE) --directory=libft
 					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_BONUS) -o $@ $^ $(LIBFT)
-					@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
+					@echo "${BOLD}${BLUE}\nProgramm $@ created.\n${RESET}"
 
 $(PUSH_SWAP_BONUS): $(OBJS_COMMON) $(OBJS_PUSH_SWAP_BONUS)
 					@$(MAKE) --directory=libft
@@ -117,7 +112,7 @@ clean:
 
 fclean: 			clean
 					@cd libft && $(MAKE) fclean
-					@$(RM) $(CHECKER) $(PUSH_SWAP)
+					@$(RM) $(CHECKER) $(PUSH_SWAP) $(CHECKER_BONUS) $(PUSH_SWAP_BONUS)
 
 re:		 			fclean all
 

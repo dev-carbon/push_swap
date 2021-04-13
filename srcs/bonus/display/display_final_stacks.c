@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker_bonus.h                                    :+:      :+:    :+:   */
+/*   display_final_stacks.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:03:18 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/12 20:52:33 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/13 11:54:50 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/13 12:16:59 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CHECKER_H
-# define CHECKER_H
+#include "display.h"
 
-# include <stdio.h>
-# include <stdlib.h>
-# include <limits.h>
-# include <time.h>
-# include "libft.h"
-# include "struct.h"
-# include "const.h"
-# include "init.h"
-# include "stack.h"
-# include "util.h"
-# include "validate.h"
-
-int		checker(t_vars *vars);
-
-#endif
+void	display_final_stacks(t_vars *vars)
+{
+	if (vars->options[VERBOSE] == ON)
+	{
+		ft_putstr("\n\n\e[4mFinal stacks\e[0m:\n");
+		display_stacks(*vars->stack_a, *vars->stack_b);
+	}
+}

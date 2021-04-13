@@ -12,13 +12,16 @@
 
 #include "util.h"
 
-int	exit_prog(int status, t_vars *vars)
+int	exit_prog(int status, char *msg, t_vars *vars)
 {
 	if (status == EXIT_FAILURE)
-		ft_putstr_fd("Error\n", STDOUT_FILENO);
+	{
+		ft_putstr_fd("Error\n", STDERR_FILENO);
+		ft_putstr_fd(msg, STDERR_FILENO);
+	}
 	if (status == EXIT_SUCCESS)
-		ft_putstr_fd("Bye!\n", STDOUT_FILENO);
-	exit(status);
+		ft_putstr_fd("Success\n", STDOUT_FILENO);
 	destroy_vars(vars);
+	exit(status);
 	return (0);
 }

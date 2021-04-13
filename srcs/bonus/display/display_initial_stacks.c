@@ -1,36 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   destroy_ops.c                                      :+:      :+:    :+:   */
+/*   display_initial_stacks.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/06 23:57:37 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 23:57:39 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/13 12:07:00 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/13 12:07:40 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "display.h"
 
-t_operation	*destroy_ops(t_operation *ops)
+void	display_initial_stacks(t_vars *vars)
 {
-	t_operation	*current;
-	t_operation	*next;
-
-	if (ops != NULL)
+	if (vars->options[VERBOSE] == ON)
 	{
-		current = ops;
-		while (current != NULL)
-		{
-			next = current->next;
-			free(current->action->label);
-			current->action->label = NULL;
-			free(current->action);
-			current->action = NULL;
-			free(current);
-			current = next;
-		}
-		ops = NULL;
+		ft_putstr("\e[4mInitial stacks\e[0m:\n");
+		display_stacks(*vars->stack_a, *vars->stack_b);
 	}
-	return (ops);
 }

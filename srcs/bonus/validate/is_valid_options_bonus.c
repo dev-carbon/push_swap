@@ -1,38 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_stacks.c                                   :+:      :+:    :+:   */
+/*   is_valid_options_bonus.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:20:16 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 20:08:26 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/13 23:06:11 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/13 23:07:07 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "validate_bonus.h"
 
-void	display_stacks(t_stack a, t_stack b)
+int	is_valid_options_bonus(int ac, char **av)
 {
-	int	i;
+	int		i;
+	int		j;
+	char	*str;
 
-	if (a.size > b.size)
+	i = 0;
+	while (++i < ac)
 	{
-		i = -1;
-		while (++i < b.size)
-			printf("%d %d\n", a.tab[i], b.tab[i]);
-		while (i < a.size)
-			printf("%d\n", a.tab[i++]);
+		if (*av[i] == '-')
+		{
+			j = 0;
+			while (*(av[i] + (++j)) != '\0')
+			{
+				if (!(str = ft_strchr("vic", *(av[i] + j))))
+					return (0);
+				if (ft_strchr(str + 1, *(av[i] + j)))
+					return (0);
+			}
+		}
 	}
-	else
-	{
-		i = -1;
-		while (++i < a.size)
-			printf("%d %d\n", a.tab[i], b.tab[i]);
-		while (i < b.size)
-			printf("  %d\n", b.tab[i++]);
-	}
-	printf("_ _\n");
-	printf("a b\n");
-	printf("---\n");
+	return (1);
 }
