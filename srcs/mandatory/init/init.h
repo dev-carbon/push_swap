@@ -1,25 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_sorted.c                                        :+:      :+:    :+:   */
+/*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/12 17:37:28 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/12 17:38:12 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/05 12:33:28 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/06 23:42:34 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#ifndef INIT_H
+# define INIT_H
 
-int	is_sorted(t_stack *stack)
-{
-	int	i;
+# include "include.h"
 
-	i = -1;
-	while (++i < stack->size - 1)
-		if (stack->tab[i] > stack->tab[i + 1])
-			return (0);
-	return (1);
-}
+t_vars	*init_vars(t_vars *vars, int argc, char **argv);
 
+#endif

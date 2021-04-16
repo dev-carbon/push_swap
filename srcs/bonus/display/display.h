@@ -15,7 +15,6 @@
 
 # include "include.h"
 
-
 void	display_stacks(t_stack stack_a, t_stack stack_b);
 void	display_initial_stacks(t_vars *vars);
 void	display_final_stacks(t_vars *vars);

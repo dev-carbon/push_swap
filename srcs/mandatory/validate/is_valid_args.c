@@ -14,9 +14,11 @@
 
 int			is_valid_args(int argc, char **argv)
 {
-	if (argc != 2)
+	if (argc < 2)
 		return (0);
-	if (!is_valid_digits(argc, argv))
-		exit_prog(EXIT_FAILURE, "Invalid digits", NULL);
+	if (argc > 2)
+		exit_prog(EXIT_FAILURE, "Too many arguments.\n", NULL);
+	if (!is_valid_list(argc, argv))
+		exit_prog(EXIT_FAILURE, "Invalid arguments.\n", NULL);
 	return (1);
 }

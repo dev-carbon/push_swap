@@ -18,7 +18,7 @@ int		is_valid_operation(char *label, t_vars *vars)
 
 	len = ft_strlen(label);
 	if (len < LABEL_MIN_LEN || len > LABEL_MAX_LEN)
-		exit_prog(EXIT_FAILURE, "Invalid operation\n", vars);
+		exit_prog(EXIT_FAILURE, "Invalid operation.\n", vars);
 	if (ft_strncmp(label, SWAP_A, len) != 0 &&
 		ft_strncmp(label, SWAP_B, len) != 0 &&
 		ft_strncmp(label, SWAP_AB, len) != 0 &&
@@ -30,6 +30,6 @@ int		is_valid_operation(char *label, t_vars *vars)
 		ft_strncmp(label, REV_ROTATE_A, len) != 0 &&
 		ft_strncmp(label, REV_ROTATE_B, len) != 0 &&
 		ft_strncmp(label, REV_ROTATE_AB, len) != 0)
-		exit_prog(EXIT_FAILURE, "Invalid operation\n", vars);
+		exit_prog(EXIT_FAILURE, "Invalid operation.\n", vars);
 	return (1);
 }

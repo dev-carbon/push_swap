@@ -12,7 +12,7 @@
 
 #include "validate_bonus.h"
 
-int	is_valid_options_bonus(int ac, char **av)
+int	is_valid_options(int ac, char **av)
 {
 	int		i;
 	int		j;

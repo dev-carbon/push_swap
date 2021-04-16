@@ -14,8 +14,8 @@
 
 static t_operation	*store_ops(t_operation *ops, char *label)
 {
-	t_operation *last;
-	t_operation *new;
+	t_operation		*last;
+	t_operation		*new;
 
 	if (!(new = (t_operation *)malloc(sizeof(t_operation))))
 		return (NULL);
@@ -36,10 +36,10 @@ static t_operation	*store_ops(t_operation *ops, char *label)
 	return (ops);
 }
 
-static void		do_ops(t_vars *vars, t_operation *operations)
+static void			do_ops(t_vars *vars, t_operation *operations)
 {
 	t_operation		*current;
-	t_action	*action;
+	t_action		*action;
 
 	current = operations;
 	while (current)
@@ -50,10 +50,10 @@ static void		do_ops(t_vars *vars, t_operation *operations)
 	}
 }
 
-static int		checker(t_vars *vars)
+static int			checker(t_vars *vars)
 {
-	int			ret;
-	char		*buf;
+	int				ret;
+	char			*buf;
 
 	while ((ret = get_next_line(STDIN_FILENO, &buf)) > 0)
 	{
@@ -68,9 +68,9 @@ static int		checker(t_vars *vars)
 	return (0);
 }
 
-int				main(int ac, char **av)
+int					main(int ac, char **av)
 {
-	t_vars		*vars;
+	t_vars			*vars;
 
 	vars = NULL;
 	if (is_valid_args(ac, av))

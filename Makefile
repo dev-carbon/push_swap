@@ -33,12 +33,6 @@ else
 	RESET        	:= ""
 endif
 
-CHECKER =			checker
-
-CHECKER_BONUS = 	checker_bonus
-
-PUSH_SWAP = 		push_swap
-
 CC = 				clang
 
 CCFLAGS = 			-Wall -Wextra -Werror -g3
@@ -47,43 +41,68 @@ SANITIZE =			-g -fsanitize=address
 
 RM = 				rm -rf
 
+CHECKER =			checker
+
+CHECKER_BONUS = 	checker_bonus
+
+PUSH_SWAP = 		push_swap
+
+PUSH_SWAP_BONUS = 	push_swap_bonus
+
 INC =				-I./libft/ \
 					-I./includes/ \
-					-I./srcs/init/ \
-					-I./srcs/stack/ \
-					-I./srcs/utils/ \
-					-I./srcs/validate/ \
+					-I./srcs/common/init/ \
+					-I./srcs/common/stack/ \
+					-I./srcs/common/sort/ \
+					-I./srcs/common/utils/ \
+					-I./srcs/common/validate/ \
 
 
-INC_PUSH_SWAP =		-I./srcs/drivers/push_swap \
-					-I./srcs/sort/ \
-
-INC_COMMON_BONUS =	-I./srcs/bonus/display/ \
+INC_BONUS =			-I./srcs/bonus/display/ \
 					-I./srcs/bonus/init/ \
 					-I./srcs/bonus/validate/ \
 
 LIBFT = 			-Llibft -lft
 
-SRCS_COMMON =		$(wildcard ./srcs/stack/*.c) \
-					$(wildcard ./srcs/init/*.c) \
-					$(wildcard ./srcs/utils/*.c) \
-					$(wildcard ./srcs/validate/*.c) \
+SRCS_COMMON =		$(wildcard ./srcs/common/init/*.c) \
+					$(wildcard ./srcs/common/stack/*.c) \
+					$(wildcard ./srcs/common/sort/*.c) \
+					$(wildcard ./srcs/common/utils/*.c) \
+					$(wildcard ./srcs/common/validate/*.c) \
 
-SRCS_CHECKER =		./srcs/drivers/checker.c
+SRCS_MANDATORY =	./srcs/mandatory/validate/is_valid_args.c \
+
+SRCS_BONUS =		$(wildcard ./srcs/bonus/display/*.c) \
+					./srcs/bonus/validate/is_valid_args_bonus.c \
+					./srcs/bonus/validate/is_valid_options_bonus.c \
+
+SRCS_CHECKER =		./srcs/mandatory/drivers/checker.c
+
+SRCS_CHECKER_BONUS =	./srcs/bonus/drivers/checker_bonus.c
 
 SRCS_PUSH_SWAP =	./srcs/drivers/push_swap.c
 
+SRCS_PUSH_SWAP_BONUS =	./srcs/bonus/drivers/push_swap_bonus.c
+
 OBJS_COMMON =		$(SRCS_COMMON: %.c=%.o)
+
+OBJS_MANDATORY =	$(SRCS_MANDATORY: %.c=%.o)
+
+OBJS_BONUS =		$(SRCS_BONUS: %.c=%.o)
 
 OBJS_CHECKER = 		$(SRCS_CHECKER: %.c=%.o)
 
+OBJS_CHECKER_BONUS = 		$(SRCS_CHECKER: %.c=%.o)
+
 OBJS_PUSH_SWAP =	$(SRCS_PUSH_SWAP: %.c=%.o)
+
+OBJS_PUSH_SWAP_BONUS =	$(SRCS_PUSH_SWAP: %.c=%.o)
 
 all: 				$(CHECKER) #$(PUSH_SWAP)
 
 bonus:				$(CHECKER_BONUS) #$(PUSH_SWAP_BONUS)
 
-$(CHECKER): 		$(OBJS_COMMON) $(OBJS_CHECKER)
+$(CHECKER): 		$(OBJS_COMMON) $(OBJS_MANDATORY) $(OBJS_CHECKER)
 					@$(MAKE) --directory=libft
 					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC) -o $@ $^ $(LIBFT)
 					@echo "${BOLD}${BLUE}\nProgramm $(CHECKER) created.\n${RESET}"
@@ -93,9 +112,9 @@ $(PUSH_SWAP): 		$(OBJS_COMMON) $(OBJS_PUSH_SWAP)
 					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_PUSH_SWAP) -o $@ $^ $(LIBFT)
 					@echo "${BOLD}${BLUE}\nProgramm $(PUSH_SWAP) created.\n${RESET}"
 
-$(CHECKER_BONUS): 	$(OBJS_COMMON) $(OBJS_CHECKER_BONUS)
+$(CHECKER_BONUS): 	$(OBJS_COMMON) $(OBJS_BONUS) $(OBJS_CHECKER_BONUS)
 					@$(MAKE) --directory=libft
-					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC_COMMON) $(INC_BONUS) -o $@ $^ $(LIBFT)
+					@$(CC) $(CCFLAGS) $(SANITIZE) $(INC) $(INC_BONUS) -o $@ $^ $(LIBFT)
 					@echo "${BOLD}${BLUE}\nProgramm $@ created.\n${RESET}"
 
 $(PUSH_SWAP_BONUS): $(OBJS_COMMON) $(OBJS_PUSH_SWAP_BONUS)

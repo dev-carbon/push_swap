@@ -1,27 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_args_bonus.c                              :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:33:51 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/14 03:45:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:32:23 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/14 03:31:09 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate.h"
-#include "validate_bonus.h"
+#include "include.h"
+#include "sort.h"
 
-int			is_valid_args(int argc, char **argv)
+static int		push_swap(t_vars *vars)
 {
-	if (argc < 2)
-		return (0);
-	if (argc > 5)
-		exit_prog(EXIT_FAILURE, "Too many argument.\n", NULL);
-	if (!is_valid_options(argc, argv))
-		exit_prog(EXIT_FAILURE, "Invalid option.\n", NULL);
-	if (!is_valid_list(argc, argv))
-		exit_prog(EXIT_FAILURE, "Invalid arguments.\n", NULL);
-	return (1);
+	sort(vars);
+	return (0);
+}
+
+int				main(int ac, char **av)
+{
+	t_vars		*vars;
+
+	vars = NULL;
+	if (is_valid_args(ac, av))
+	{
+		vars = init_vars(vars, ac, av);
+		push_swap(vars);
+		destroy_vars(vars);
+	}
+	return (0);
 }

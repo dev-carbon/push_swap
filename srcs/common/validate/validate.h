@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   validate.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:32:23 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 16:23:10 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:48:35 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/04 12:48:40 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "include.h"
-#include "sort.h"
+#ifndef VALIDATE_H
+# define VALIDATE_H
 
-static int		push_swap(t_vars *vars)
-{
-	sort(vars);
-	return (0);
-}
+# include "include.h"
 
-int				main(int ac, char **av)
-{
-	t_vars		*vars;
+int		is_valid_args(int argc, char **argv);
+int		is_valid_list(int ac, char **av);
+int		is_valid_operation(char *label, t_vars *vars);
 
-	vars = NULL;
-	if (is_valid_args(ac, av))
-	{
-		vars = init_vars(vars, ac, av);
-		push_swap(vars);
-		destroy_vars(vars);
-	}
-	return (0);
-}
+#endif

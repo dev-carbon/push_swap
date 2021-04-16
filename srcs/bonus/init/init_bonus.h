@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef INIT_BONUS_H
+# define INIT_BONUS_H
 
-# include "checker.h"
+# include "include.h"
 
 t_vars	*init_vars(t_vars *vars, int argc, char **argv);
 
