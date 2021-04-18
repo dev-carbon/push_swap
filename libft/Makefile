@@ -6,7 +6,7 @@
 #    By: humanfou <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    created: 2020/09/23 17:49:24 by humanfou          #+#    #+#              #
-#    Updated: 2021/04/08 15:27:30 by humanfou         ###   ########.fr        #
+#    Updated: 2021/04/17 16:38:32 by humanfou         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,8 @@ CFLAGS = -Wall -Werror -Wextra
 LIB = ar rc
 
 SRCS = get_next_line.c \
-	ft_swap.c \
+	ft_print_split.c \
+    ft_swap.c \
 	ft_putstrnl.c \
 	ft_strncpy.c \
 	ft_strremove_spaces.c \

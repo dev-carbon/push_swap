@@ -19,15 +19,15 @@ static t_vars	*set_option(t_vars *vars, char *label)
 		if (*label == 'v' && vars->options[VERBOSE] == OFF)
 			vars->options[VERBOSE] = ON;
 		else if (*label == 'v' && vars->options[VERBOSE] == ON)
-			exit_prog(EXIT_FAILURE, vars);
+			exit_prog(EXIT_FAILURE, "Duplicated options\n", vars);
 		if (*label == 'c' && vars->options[COLOURS] == OFF)
 			vars->options[COLOURS] = ON;
 		else if (*label == 'c' && vars->options[COLOURS] == ON)
-			exit_prog(EXIT_FAILURE, vars);
+			exit_prog(EXIT_FAILURE, "Duplicated options\n", vars);
 		if (*label == 'i' && vars->options[ITERATE] == OFF)
 			vars->options[ITERATE] = ON;
 		else if (*label == 'i' && vars->options[ITERATE] == ON)
-			exit_prog(EXIT_FAILURE, vars);
+			exit_prog(EXIT_FAILURE, "Duplicated options\n", vars);
 		label++;
 	}
 	return (vars);

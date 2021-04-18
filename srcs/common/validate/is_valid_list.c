@@ -24,11 +24,34 @@ static int	is_valid_list_chars(char **list)
 		j = -1;
 		while ((c = list[i][++j]) != '\0')
 		{
-			// copy and edit this lie for bonus
 			if (j == 0 && (c == '-' || c == '+'))
 				j++; 
 			if (!ft_isdigit(list[i][j]))
 				return (0);
+		}
+	}
+	return (1);
+}
+
+static int	is_valid_options(char **split)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = -1;
+	while (split[++i])
+	{
+		if (*split[i] == '-')
+		{
+			j = 0;
+			while (*(split[i] + (++j)) != '\0')
+			{
+				if (!(str = ft_strchr("vic", *(split[i] + j))))
+					return (0);
+				if (ft_strchr(str + 1, *(split[i] + j)))
+					return (0);
+			}
 		}
 	}
 	return (1);
@@ -39,24 +62,29 @@ static char	**is_duplicate_list(int ac, char **av)
 	int		i;
 	int		count;
 	char	**list;
+	char	**digits;
 
 	i = 0;
 	count = 0;
-	list = NULL;
+	digits = NULL;
 	while (++i < ac)
 	{
 		list = ft_split(av[i], 32);
 		if (is_valid_list_chars(list))
+		{
 			count++;
-		else
+			digits = ft_split(av[i], 32);
+		}
+		else if (!is_valid_options(list))
 		{
 			destroy_split(list);
 			exit_prog(EXIT_FAILURE, "Invalid list character.\n", NULL);
 		}
 		if (count > 1)
-			destroy_split(list);
+			destroy_split(digits);
+		destroy_split(list);
 	}
-	return (list);
+	return (digits);
 }
 
 int			is_valid_list(int ac, char **av)
@@ -73,11 +101,17 @@ int			is_valid_list(int ac, char **av)
 	{
 		nbr = ft_atoi(digits[i]);
 		if (nbr < INT_MIN || nbr > INT_MAX)
+		{
+			destroy_split(digits);
 			exit_prog(EXIT_FAILURE, "Invalid integer.\n", NULL);
+		}
 		j = i;
 		while (digits[++j] != NULL)
 			if (nbr == ft_atoi(digits[j]))
+			{
+				destroy_split(digits);
 				exit_prog(EXIT_FAILURE, "Duplicated integer.\n", NULL);
+			}
 	}
 	destroy_split(digits);
 	return (1);

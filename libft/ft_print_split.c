@@ -1,26 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_valid_args_bonus.c                              :+:      :+:    :+:   */
+/*   ft_print_split.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/04 12:33:51 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/14 03:45:23 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/17 16:24:36 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/17 16:46:23 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "validate_bonus.h"
+#include "libft.h"
 
-int			is_valid_args(int argc, char **argv)
+void    ft_print_split(char **split)
 {
-	if (argc < 2)
-		return (0);
-	if (argc > 5)
-		exit_prog(EXIT_FAILURE, "Too many argument.\n", NULL);
-	if (!is_valid_options(argc, argv))
-		exit_prog(EXIT_FAILURE, "Invalid option.\n", NULL);
-	if (!is_valid_list(argc, argv))
-		exit_prog(EXIT_FAILURE, "Invalid arguments.\n", NULL);
-	return (1);
+    int i;
+
+    i = -1;
+    while (split[++i])
+        ft_putstrnl(split[i]);
 }
