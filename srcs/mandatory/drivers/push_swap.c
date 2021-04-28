@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "include.h"
+#include "init.h"
 #include "sort.h"
 
 static int		push_swap(t_vars *vars)

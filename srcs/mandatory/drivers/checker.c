@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "include.h"
+#include "init.h"
 
 static t_operation	*store_ops(t_operation *ops, char *label)
 {
