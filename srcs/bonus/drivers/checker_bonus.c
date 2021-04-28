@@ -11,7 +11,8 @@
 /* ************************************************************************** */
 
 #include "include.h"
-#include "display.h"
+#include "init_bonus.h"
+#include "display_bonus.h"
 
 static t_operation	*store_ops(t_operation *ops, char *label)
 {

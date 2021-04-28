@@ -1,38 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_stacks.c                                   :+:      :+:    :+:   */
+/*   push_swap_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 11:20:16 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 20:08:26 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/04 12:32:23 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/28 12:37:12 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "util.h"
+#include "include.h"
+#include "init_bonus.h"
+#include "sort.h"
+#include "validate_bonus.h"
 
-void	display_stacks(t_stack a, t_stack b)
+static int		push_swap(t_vars *vars)
 {
-	int	i;
+	sort(vars);
+	return (0);
+}
 
-	printf("\n");
-	if (a.size > b.size)
+int				main(int ac, char **av)
+{
+	t_vars		*vars;
+
+	vars = NULL;
+	if (is_valid_args(ac, av))
 	{
-		i = -1;
-		while (++i < b.size)
-			printf("%d %d\n", a.tab[i], b.tab[i]);
-		while (i < a.size)
-			printf("%d\n", a.tab[i++]);
+		vars = init_vars(vars, ac, av);
+		push_swap(vars);
+		destroy_vars(vars);
 	}
-	else
-	{
-		i = -1;
-		while (++i < a.size)
-			printf("%d %d\n", a.tab[i], b.tab[i]);
-		while (i < b.size)
-			printf("  %d\n", b.tab[i++]);
-	}
-	printf("_ _\n");
-	printf("a b\n\n");
+	return (0);
 }

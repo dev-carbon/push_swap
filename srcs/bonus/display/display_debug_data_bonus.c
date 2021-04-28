@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   display_data.c                                     :+:      :+:    :+:   */
+/*   display_debug_data_bonus.c                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/13 19:01:52 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/13 19:01:54 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/04/28 12:41:42 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "display.h"
+#include "display_bonus.h"
 
 void	display_debug_data(t_vars *vars, int count)
 {
