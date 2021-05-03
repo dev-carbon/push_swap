@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "init.h"
+#include "init_bonus.h"
 
 static t_vars	*set_option(t_vars *vars, char *label)
 {

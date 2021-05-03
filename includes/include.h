@@ -20,7 +20,6 @@
 # include "libft.h"
 # include "const.h"
 # include "struct.h"
-# include "init.h"
 # include "stack.h"
 # include "sort.h"
 # include "util.h"

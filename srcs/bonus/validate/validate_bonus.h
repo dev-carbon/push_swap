@@ -15,6 +15,7 @@
 
 # include "include.h"
 
-int		is_valid_options(int ac, char **av);
+int 	is_valid_args(int argc, char **argv);
+int		is_valid_options(int argc, char **argv);
 
 #endif

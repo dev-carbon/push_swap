@@ -21,5 +21,6 @@ t_operation	*destroy_ops(t_operation *ops);
 void		destroy_split(char **split);
 void		execute(t_vars *vars, t_action *action);
 t_action	*set_action(t_action *action, char *label);
+void        destroy_action(t_action *action);
 
 #endif

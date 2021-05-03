@@ -23,9 +23,11 @@ t_vars			*swap_push_a(t_vars *vars)
 		action = set_action(action, PUSH_A);
 		ft_putstr(action->label);
 		execute(vars, action);
+		destroy_action(action);
 		action = set_action(action, SWAP_A);
 		ft_putstr(action->label);
 		execute(vars, action);
+		destroy_action(action);
 	}
 	return (vars);
 }
@@ -40,6 +42,7 @@ t_vars			*swap_a(t_vars *vars)
 		action = set_action(action, SWAP_A);
 		ft_putstr(action->label);
 		execute(vars, action);
+		destroy_action(action);
 	}
 	return (vars);
 }
@@ -52,6 +55,7 @@ t_vars			*push_b(t_vars *vars)
 	action = set_action(action, PUSH_B);
 	ft_putstr(action->label);
 	execute(vars, action);
+	destroy_action(action);
 	return (vars);
 }
 
@@ -63,6 +67,7 @@ t_vars			*push_a(t_vars *vars)
 	action = set_action(action, PUSH_A);
 	ft_putstr(action->label);
 	execute(vars, action);
+	destroy_action(action);
 	return (vars);
 }
 

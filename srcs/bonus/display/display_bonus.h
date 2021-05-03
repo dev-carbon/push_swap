@@ -1,20 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.h                                             :+:      :+:    :+:   */
+/*   display_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/05 12:33:28 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/06 23:42:34 by humanfou         ###   ########.fr       */
+/*   Created: 2021/04/13 11:56:47 by humanfou          #+#    #+#             */
+/*   Updated: 2021/04/28 12:37:36 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INIT_H
-# define INIT_H
+#ifndef DISPLAY_BONUS_H
+# define DISPLAY_BONUS_H
 
 # include "include.h"
 
-t_vars	*init_vars(t_vars *vars, int argc, char **argv);
+void	display_stacks(t_stack stack_a, t_stack stack_b);
+void	display_initial_stacks(t_vars *vars);
+void	display_final_stacks(t_vars *vars);
+void	display_debug_data(t_vars *vars, int count);
 
 #endif
