@@ -21,7 +21,7 @@
 
 # define BUFFER_SIZE	1
 
-void                ft_print_split(char **split);
+void				ft_print_split(char **split);
 void				ft_putstrnl(char *str);
 void				ft_swap(int *a, int *b);
 char				*strncpy(char *dest, const char *src, size_t n);
@@ -59,7 +59,7 @@ int					ft_strcmp(const char *s1, const char *s2);
 size_t				ft_strlcpy(char *dst, const char *src, size_t size);
 size_t				ft_strlcat(char *dst, const char *src, size_t size);
 char				*ft_strnstr(const char *big, const char *little,
-					size_t len);
+						size_t len);
 int					ft_atoi(const char *nptr);
 void				*ft_calloc(size_t nmemb, size_t size);
 char				*ft_strdup(const char *s);
@@ -82,7 +82,7 @@ void				ft_putnbr_fd(int n, int fd);
 void				ft_putnbr(int nbr);
 void				ft_putnbrmax_fd(intmax_t n, int fd);
 void				ft_putnbrumax_fd(uintmax_t n, int fd);
-typedef struct		s_list
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;

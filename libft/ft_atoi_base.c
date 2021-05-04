@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		is_valid(char *str, char *base)
+static int	is_valid(char *str, char *base)
 {
 	int	i;
 	int	j;
@@ -34,7 +34,7 @@ int		is_valid(char *str, char *base)
 	}
 }
 
-int		get_char_position(char c, char *base)
+static int	get_char_position(char c, char *base)
 {
 	int	i;
 
@@ -45,7 +45,7 @@ int		get_char_position(char c, char *base)
 	return (0);
 }
 
-int		get_power(int x, int y)
+static int	get_power(int x, int y)
 {
 	int	pow;
 
@@ -57,7 +57,7 @@ int		get_power(int x, int y)
 	return (pow);
 }
 
-int		ft_atoi_base(char *str, char *base)
+int	ft_atoi_base(char *str, char *base)
 {
 	int	i;
 	int	pos;
@@ -71,8 +71,11 @@ int		ft_atoi_base(char *str, char *base)
 		base_len = ft_strlen(base);
 		nbr_len = ft_strlen(str);
 		i = -1;
-		while (str[++i] != '\0' && (pos = get_char_position(str[i], base)) >= 0)
+		while (str[++i] != '\0')
 		{
+			pos = get_char_position(str[i], base);
+			if (pos < 0)
+				break ;
 			nbr = nbr + pos * get_power(base_len, nbr_len - 1);
 			nbr_len -= 1;
 		}
