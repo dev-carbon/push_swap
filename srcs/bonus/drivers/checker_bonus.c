@@ -19,9 +19,11 @@ static t_operation	*store_ops(t_operation *ops, char *label)
 	t_operation		*last;
 	t_operation		*new;
 
-	if (!(new = (t_operation *)malloc(sizeof(t_operation))))
+	new = (t_operation *)malloc(sizeof(t_operation));
+	if (!new)
 		return (NULL);
-	if (!(new->action = (t_action *)malloc(sizeof(t_action))))
+	new->action = (t_action *)malloc(sizeof(t_action));
+	if (!new->action)
 		return (NULL);
 	new->action->label = ft_strdup(label);
 	new->action->len = ft_strlen(label);
@@ -38,7 +40,7 @@ static t_operation	*store_ops(t_operation *ops, char *label)
 	return (ops);
 }
 
-static void			do_ops(t_vars *vars, t_operation *operations)
+static void	do_ops(t_vars *vars, t_operation *operations)
 {
 	t_operation		*current;
 	t_action		*action;
@@ -52,7 +54,7 @@ static void			do_ops(t_vars *vars, t_operation *operations)
 	}
 }
 
-static t_vars		*free_ops(t_vars *vars)
+static t_vars	*free_ops(t_vars *vars)
 {
 	free(vars->ops->action->label);
 	vars->ops->action->label = NULL;
@@ -63,7 +65,7 @@ static t_vars		*free_ops(t_vars *vars)
 	return (vars);
 }
 
-static int			checker(t_vars *vars)
+static int	checker(t_vars *vars)
 {
 	int				count;
 	char			*buf;
@@ -71,8 +73,8 @@ static int			checker(t_vars *vars)
 	display_initial_stacks(vars);
 	count = 0;
 	ft_putstr("\n\e[4mExec\e[0m: ");
-	while (get_next_line(STDIN_FILENO, &buf) > 0 &&
-		is_valid_operation(buf, vars))
+	while (get_next_line(STDIN_FILENO, &buf) > 0
+		&& is_valid_operation(buf, vars))
 	{
 		vars->ops = store_ops(vars->ops, buf);
 		do_ops(vars, vars->ops);
@@ -83,12 +85,14 @@ static int			checker(t_vars *vars)
 	}
 	free(buf);
 	display_final_stacks(vars);
-	is_empty(vars->stack_b) && is_sorted(vars->stack_a) ?
-		ft_putstr("OK\n") : ft_putstr("KO\n");
+	if (is_empty(vars->stack_b) && is_sorted(vars->stack_a))
+		ft_putstr("OK\n");
+	else
+		ft_putstr("KO\n");
 	return (0);
 }
 
-int					main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_vars			*vars;
 

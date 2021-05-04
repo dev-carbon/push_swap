@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   peek.c                                             :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/04/08 11:51:51 by humanfou          #+#    #+#             */
-/*   Updated: 2021/05/04 12:43:00 by humanfou         ###   ########.fr       */
+/*   Created: 2021/05/04 14:19:22 by humanfou          #+#    #+#             */
+/*   Updated: 2021/05/04 14:27:33 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "stack.h"
+#include "libft.h"
 
-int	peek(t_stack *stack)
+int	main(int ac, char **av)
 {
-	if (!is_empty(stack))
-		return (stack->tab[0]);
-	return (INT_MIN);
+	int	nbr;
+
+	if (ac > 1)
+	{
+		nbr = ft_atoi(av[1]);
+		ft_putstr(ft_itoa(nbr));
+		return (0);
+	}
 }

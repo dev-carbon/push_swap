@@ -26,7 +26,8 @@ int	is_valid_options(int ac, char **av)
 			j = 0;
 			while (*(av[i] + (++j)) != '\0')
 			{
-				if (!(str = ft_strchr("vic", *(av[i] + j))))
+				str = ft_strchr("vic", *(av[i] + j));
+				if (!str)
 					return (0);
 				if (ft_strchr(str + 1, *(av[i] + j)))
 					return (0);

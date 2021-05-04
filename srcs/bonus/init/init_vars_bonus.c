@@ -33,6 +33,21 @@ static t_vars	*set_option(t_vars *vars, char *label)
 	return (vars);
 }
 
+static t_vars	*set_vars(t_vars *vars, int argc, char **argv)
+{
+	vars = (t_vars *)malloc(sizeof(t_vars));
+	if (!vars)
+		return (NULL);
+	vars->args = (t_args *)malloc(sizeof(t_args));
+	if (!vars->args)
+		return (NULL);
+	vars->args->ac = argc;
+	vars->args->av = argv;
+	vars->stack_a = create_stack(0);
+	vars->stack_b = create_stack(0);
+	return (vars);
+}
+
 static t_vars	*init_options(t_vars *vars)
 {
 	vars->options[VERBOSE] = OFF;
@@ -41,27 +56,22 @@ static t_vars	*init_options(t_vars *vars)
 	return (vars);
 }
 
-t_vars			*init_vars(t_vars *vars, int argc, char **argv)
+t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 {
 	int		i;
 	int		size;
 	char	**split;
 
-	if (!(vars = (t_vars *)malloc(sizeof(t_vars))))
-		return (NULL);
-	if (!(vars->args = (t_args*)malloc(sizeof(t_args))))
-		return (NULL);
-	vars->args->ac = argc;
-	vars->args->av = argv;
-	vars->stack_a = create_stack(0);
-	vars->stack_b = create_stack(0);
+	vars = set_vars(vars, argc, argv);
 	init_options(vars);
 	i = 0;
 	while (++i < argc)
+	{
 		if (*argv[i] == '-')
 			vars = set_option(vars, argv[i] + 1);
 		else
 			split = ft_split(argv[i], ' ');
+	}
 	size = ft_split_len(split);
 	while (--size >= 0)
 		vars->stack_a = push(vars->stack_a, ft_atoi(split[size]));

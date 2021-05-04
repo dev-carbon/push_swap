@@ -108,7 +108,7 @@ all: bonus
 
 bonus: $(OBJ) $(OBJ_BONUS)
 	@$(LIB) $(NAME) $^
-	@echo "${BOLD}${GREEN}\n${NAME} created.\n${RESET}"
+	@echo "${BOLD}${GREEN}${NAME} created.${RESET}"
 
 $(NAME):
 	@$(CC) $(CFLAGS) -c $(SRCS)
@@ -116,11 +116,11 @@ $(NAME):
 
 clean:
 	@/bin/rm -rf $(OBJ) $(OBJ_BONUS)
-	@echo "${BOLD}${YELLOW}\nCleaned libft object files.\n${RESET}"
+	@echo "${BOLD}${YELLOW}Cleaned libft object files.${RESET}"
 
 fclean: clean
 	@/bin/rm -f $(NAME)
-	@echo "${BOLD}${YELLOW}${NAME} removed.\n${RESET}"
+	@echo "${BOLD}${YELLOW}${NAME} removed.${RESET}"
 
 
 re: fclean all

@@ -17,9 +17,11 @@ t_vars	*init_vars(t_vars *vars, int argc, char **argv)
 	int		size;
 	char	**split;
 
-	if (!(vars = (t_vars *)malloc(sizeof(t_vars))))
+	vars = (t_vars *)malloc(sizeof(t_vars));
+	if (!vars)
 		return (NULL);
-	if (!(vars->args = (t_args*)malloc(sizeof(t_args))))
+	vars->args = (t_args *)malloc(sizeof(t_args));
+	if (!vars->args)
 		return (NULL);
 	vars->args->ac = argc;
 	vars->args->av = argv;

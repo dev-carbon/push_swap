@@ -6,13 +6,13 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 14:29:09 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 14:29:10 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/05/04 13:10:38 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_stack		*pop(t_stack *stack)
+t_stack	*pop(t_stack *stack)
 {
 	int		i;
 	t_stack	*prev;

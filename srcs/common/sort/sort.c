@@ -12,13 +12,13 @@
 
 #include "sort.h"
 
-t_vars			*swap_push_a(t_vars *vars)
+t_vars	*swap_push_a(t_vars *vars)
 {
 	t_action	*action;
 
 	action = NULL;
-	while (!is_empty(vars->stack_b) &&
-		peek(vars->stack_a) < peek(vars->stack_b))
+	while (!is_empty(vars->stack_b)
+		&& peek(vars->stack_a) < peek(vars->stack_b))
 	{
 		action = set_action(action, PUSH_A);
 		ft_putstr(action->label);
@@ -32,7 +32,7 @@ t_vars			*swap_push_a(t_vars *vars)
 	return (vars);
 }
 
-t_vars			*swap_a(t_vars *vars)
+t_vars	*swap_a(t_vars *vars)
 {
 	t_action	*action;
 
@@ -47,7 +47,7 @@ t_vars			*swap_a(t_vars *vars)
 	return (vars);
 }
 
-t_vars			*push_b(t_vars *vars)
+t_vars	*push_b(t_vars *vars)
 {
 	t_action	*action;
 
@@ -59,7 +59,7 @@ t_vars			*push_b(t_vars *vars)
 	return (vars);
 }
 
-t_vars			*push_a(t_vars *vars)
+t_vars	*push_a(t_vars *vars)
 {
 	t_action	*action;
 
@@ -71,7 +71,7 @@ t_vars			*push_a(t_vars *vars)
 	return (vars);
 }
 
-t_vars			*sort(t_vars *vars)
+t_vars	*sort(t_vars *vars)
 {
 	t_action	*action;
 

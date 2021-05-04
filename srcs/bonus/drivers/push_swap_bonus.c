@@ -15,13 +15,13 @@
 #include "sort.h"
 #include "validate_bonus.h"
 
-static int		push_swap(t_vars *vars)
+static int	push_swap(t_vars *vars)
 {
 	sort(vars);
 	return (0);
 }
 
-int				main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	t_vars		*vars;
 

@@ -12,26 +12,38 @@
 
 #include "libft.h"
 
-char	*ft_itoa(intmax_t nbr)
+static uintmax_t	init_nbr(int nbr)
 {
 	uintmax_t	unbr;
-	int			number_length;
-	int			i;
-	char		*res;
 
-	unbr = (nbr < 0) ? -nbr : nbr;
-	number_length = (nbr < 0) ? ft_nbrlen(unbr) + 1 : ft_nbrlen(unbr);
-	if (!(res = (char *)malloc(sizeof(char) * (number_length + 1))))
+	if (nbr < 0)
+		unbr = -nbr;
+	else
+		unbr = nbr;
+	return (unbr);
+}
+
+char	*ft_itoa(intmax_t nbr)
+{
+	int			nbr_len;
+	int			i;
+	char		*ret;
+	uintmax_t	unbr;
+
+	unbr = init_nbr(nbr);
+	nbr_len = ft_nbrlen(nbr);
+	ret = (char *)malloc(sizeof(char) * (nbr_len + 1));
+	if (!ret)
 		return (NULL);
 	i = -1;
 	while (unbr > 0)
 	{
-		res[++i] = (int)unbr % 10 + '0';
+		ret[++i] = (int)unbr % 10 + '0';
 		unbr /= 10;
 	}
 	if (nbr < 0)
-		res[++i] = '-';
-	res[++i] = '\0';
-	ft_strrev(res);
-	return (res);
+		ret[++i] = '-';
+	ret[++i] = '\0';
+	ft_strrev(ret);
+	return (ret);
 }

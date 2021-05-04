@@ -12,7 +12,7 @@
 
 #include "validate.h"
 
-int			is_valid_args(int argc, char **argv)
+int	is_valid_args(int argc, char **argv)
 {
 	if (argc < 2)
 		return (0);

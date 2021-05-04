@@ -42,7 +42,7 @@ static void	do_push(t_stack **dst, t_stack **src)
 	}
 }
 
-void		execute(t_vars *vars, t_action *action)
+void	execute(t_vars *vars, t_action *action)
 {
 	if (ft_strncmp(action->label, SWAP_A, action->len) == 0)
 		swap(vars->stack_a);

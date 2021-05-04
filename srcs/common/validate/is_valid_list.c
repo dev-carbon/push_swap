@@ -22,10 +22,11 @@ static int	is_valid_list_chars(char **list)
 	while (list[++i] != NULL)
 	{
 		j = -1;
-		while ((c = list[i][++j]) != '\0')
+		while (list[i][++j] != '\0')
 		{
+			c = list[i][j];
 			if (j == 0 && (c == '-' || c == '+'))
-				j++; 
+				j++;
 			if (!ft_isdigit(list[i][j]))
 				return (0);
 		}
@@ -47,7 +48,8 @@ static int	is_valid_options(char **split)
 			j = 0;
 			while (*(split[i] + (++j)) != '\0')
 			{
-				if (!(str = ft_strchr("vic", *(split[i] + j))))
+				str = ft_strchr("vic", *(split[i] + j));
+				if (!str)
 					return (0);
 				if (ft_strchr(str + 1, *(split[i] + j)))
 					return (0);
@@ -70,13 +72,12 @@ static char	**is_duplicate_list(int ac, char **av)
 	while (++i < ac)
 	{
 		list = ft_split(av[i], 32);
+		digits = ft_split(av[i], 32);
 		if (is_valid_list_chars(list))
-		{
 			count++;
-			digits = ft_split(av[i], 32);
-		}
 		else if (!is_valid_options(list))
 		{
+			destroy_split(digits);
 			destroy_split(list);
 			exit_prog(EXIT_FAILURE, "Invalid list character.\n", NULL);
 		}
@@ -87,14 +88,26 @@ static char	**is_duplicate_list(int ac, char **av)
 	return (digits);
 }
 
-int			is_valid_list(int ac, char **av)
+void	check_duplicated_integer(char **list, int nbr, int start)
+{
+	while (list[++start] != NULL)
+	{
+		if (nbr == ft_atoi(list[start]))
+		{
+			destroy_split(list);
+			exit_prog(EXIT_FAILURE, "Duplicated integer.\n", NULL);
+		}
+	}
+}
+
+int	is_valid_list(int ac, char **av)
 {
 	int		i;
-	int		j;
 	int		nbr;
 	char	**digits;
 
-	if (!(digits = is_duplicate_list(ac, av)))
+	digits = is_duplicate_list(ac, av);
+	if (!digits)
 		exit_prog(EXIT_FAILURE, "Duplicated list.\n", NULL);
 	i = -1;
 	while (digits[++i])
@@ -105,13 +118,7 @@ int			is_valid_list(int ac, char **av)
 			destroy_split(digits);
 			exit_prog(EXIT_FAILURE, "Invalid integer.\n", NULL);
 		}
-		j = i;
-		while (digits[++j] != NULL)
-			if (nbr == ft_atoi(digits[j]))
-			{
-				destroy_split(digits);
-				exit_prog(EXIT_FAILURE, "Duplicated integer.\n", NULL);
-			}
+		check_duplicated_integer(digits, nbr, i);
 	}
 	destroy_split(digits);
 	return (1);

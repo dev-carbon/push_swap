@@ -12,9 +12,10 @@
 
 #include "util.h"
 
-t_action		*set_action(t_action *action, char *label)
+t_action	*set_action(t_action *action, char *label)
 {
-	if (!(action = (t_action *)malloc(sizeof(t_action))))
+	action = (t_action *)malloc(sizeof(t_action));
+	if (!action)
 		return (NULL);
 	action->label = ft_strdup(label);
 	action->len = ft_strlen(label);

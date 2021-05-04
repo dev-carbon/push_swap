@@ -6,13 +6,13 @@
 /*   By: humanfou <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/05 12:49:36 by humanfou          #+#    #+#             */
-/*   Updated: 2021/04/05 12:49:40 by humanfou         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:28:26 by humanfou         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "stack.h"
 
-t_stack		*push(t_stack *stack, int top)
+t_stack	*push(t_stack *stack, int top)
 {
 	int		i;
 	t_stack	*prev;

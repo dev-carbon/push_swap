@@ -12,10 +12,10 @@
 
 #include "util.h"
 
-void    destroy_action(t_action *action)
+void	destroy_action(t_action *action)
 {
-    free(action->label);
-    action->label = NULL;
-    free(action);
-    action = NULL;
+	free(action->label);
+	action->label = NULL;
+	free(action);
+	action = NULL;
 }

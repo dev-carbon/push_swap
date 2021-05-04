@@ -12,11 +12,12 @@
 
 #include "stack.h"
 
-t_stack		*create_stack(size_t size)
+t_stack	*create_stack(size_t size)
 {
 	t_stack	*stack;
 
-	if (!(stack = (t_stack *)malloc(sizeof(t_stack))))
+	stack = (t_stack *)malloc(sizeof(t_stack));
+	if (!stack)
 		return (NULL);
 	if (size > 0)
 		stack->tab = (int *)malloc(sizeof(int) * size);

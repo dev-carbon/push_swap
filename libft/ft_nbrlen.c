@@ -17,10 +17,18 @@ size_t	ft_nbrlen(intmax_t number)
 	size_t		len;
 	uintmax_t	unumber;
 
-	len = 1;
-	len += number < 0 ? 1 : 0;
-	unumber = (number < 0) ? -number : number;
-	while ((unumber /= 10) > 0)
+	len = 0;
+	if (number < 0)
+	{
+		len = 1;
+		unumber = -number;
+	}
+	else
+		unumber = number;
+	while (unumber > 0)
+	{
+		unumber /= 10;
 		len++;
+	}
 	return (len);
 }

@@ -68,7 +68,7 @@ char				*ft_substr(char const *s, unsigned int start, size_t len);
 char				*ft_strjoin(char const *s1, char const *s2);
 char				*ft_strtrim(char const *s1, char const *set);
 char				*ft_strrtrim(char const *s1, char const *set);
-char				**ft_split(char const *s, char c);
+char				**ft_split(char *s, char c);
 char				*ft_itoa(intmax_t nbr);
 char				*ft_itoa_base(intmax_t value, int base, char case_type);
 char				*ft_strmapi(char const *s, char (*f)(unsigned int, char));
